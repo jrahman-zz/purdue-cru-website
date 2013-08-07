@@ -79,7 +79,7 @@ class CRU_Admin_Module {
 
         if (CRU_Utils::get_request_param('ajax') === "true") {
             echo json_encode($action_result);
-			die();
+            die();
         }
         return $action_result;
     }
