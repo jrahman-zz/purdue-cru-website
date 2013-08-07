@@ -77,7 +77,8 @@ class CRU_Small_Groups_Module {
         }
 
         if (CRU_Utils::get_request_param('ajax') === "true") {
-            $action_result = json_encode($action_result);
+            echo json_encode($action_result);
+			die();
         }
         return $action_result;
     }
@@ -97,7 +98,8 @@ class CRU_Small_Groups_Module {
         }
 
         if (CRU_Utils::get_request_param('ajax') === "true") {
-            $action_result = json_encode($action_result);
+            echo json_encode($action_result);
+			die();
         }
         return $action_result;
     }
@@ -112,7 +114,8 @@ class CRU_Small_Groups_Module {
         $action_result["page"] = "admin.php?page=cru-small-groups";
 
         if (CRU_Utils::get_request_param('ajax') === "true") {
-            $action_result = json_encode($action_result);
+            echo json_encode($action_result);
+			die();
         }
         return $action_result;
     }
