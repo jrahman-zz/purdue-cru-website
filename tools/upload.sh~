@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Uploading theme..."
+scp -r ~/Dropbox/CRU_Website/wp-theme/PurdueCRU rahmanj@ftp.ics.purdue.edu:www/wp-content/themes
+sudo cp -r ~/Dropbox/CRU_Website/wp-theme/PurdueCRU /var/www/wp-content/themes
+
+echo "Uploading plugin..."
+scp -r ~/Dropbox/CRU_Website/wp-plugin/PurdueCRU rahmanj@ftp.ics.purdue.edu:www/wp-content/plugins
+sudo cp -r ~/Dropbox/CRU_Website/wp-plugin/PurdueCRU /var/www/wp-content/plugins
