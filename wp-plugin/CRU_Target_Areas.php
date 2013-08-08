@@ -372,9 +372,7 @@ class CRU_Target_Areas {
         } else {
 
             // Validate input
-            if (CRU_Utils::get_request_param('affiliation_type') === FALSE 
-                || (CRU_Utils::get_request_param('affiliation_type') != CRU_Utils::_student_group_leader
-                    && CRU_Utils::get_request_param('affiliation_type') != CRU_Utils::_staff_area_leader)) {
+            if (CRU_Utils::get_request_param('affiliation_type') === FALSE) {
                 $result['success'] = FALSE;
                 $result['message'] = "Invalid or missing affiliation type";
             } else if (CRU_Utils::get_request_param('contact_id') === FALSE
@@ -390,8 +388,16 @@ class CRU_Target_Areas {
                 $table_name = $table_prefix . CRU_Utils::_area_contacts_table;  
              
                 // Perform the query against the area_contacts table
-                $query = $wpdb->prepare("DELETE FROM " . $table_name . " WHERE contact_id = %s AND area_id = %s AND affiliation_type = %s",
-                                        CRU_Utils::get_request_param('contact_id'), CRU_Utils::get_request_param('area_id'), CRU_Utils::get_request_param('affiliation_type'));
+                $area_id            = CRU_Utils::get_request_param('area_id');
+                $contact_id         = CRU_Utils::get_request_param('contact_id');
+                $affiliation_type   = CRU_Utils::get_request_param('affiliation_type');
+
+                $query = $wpdb->prepare("DELETE FROM " . $table_name .
+                                        " WHERE contact_id = %s AND area_id = %s AND affiliation_type = %s", 
+                                        $contact_id, 
+                                        $area_id,
+                                        $affiliation_type);
+
                 $val = $wpdb->query($query);
                 if ($val > 0) {
                     $result['success'] = TRUE;
