@@ -224,7 +224,7 @@ function cru_validate_contact_form($input, $form_url) {
         $message .= "Message: " . $input['message'];
 
 		// Create subject line
-		$subject = "Website Contact Form -" . $input['subject'];
+		$subject = "Website Contact Form - " . $input['subject'];
         if (preg_match('/[0-9]+/', $input['target-area'])) {
             // Send message to target area
             $ret = CRU_Messaging::send_target_area_message($subject,
