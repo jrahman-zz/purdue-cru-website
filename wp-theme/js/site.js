@@ -121,7 +121,7 @@ function testSubject(subject) {
 }
 
 function testMessage(message) {
-    var re = /^.{1,2000}$/;
+    var re = /^.{1,5000}$/s;
     return re.test(message);
 }
 

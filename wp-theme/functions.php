@@ -184,9 +184,9 @@ function cru_validate_contact_form($input, $form_url) {
 	/* NOTE: Form field names cannot have spaces */
 	$form_fields = array("name"         => array("regex" => '/^([A-Za-z_\']{1,100} *)+$/'),
 						"email"         => array("func" => 'cru_validate_email'),
-						"subject"       => array("regex" => '/^[A-Za-z_ 0-9]{1,100}$/'),
+						"subject"       => array("regex" => '/^.{0,50}\w.{0,50}$/'),
 						"target-area"   => array("regex" => '/^[A-Za-z_ 0-9]{0,100}$/'),
-						"message"       => array("regex" => '/^.{1,1000}$/')
+						"message"       => array("regex" => '/^.{1,5000}$/s')
 						);
 
 	// Perform validation on each field
