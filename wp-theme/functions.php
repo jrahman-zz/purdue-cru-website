@@ -223,15 +223,17 @@ function cru_validate_contact_form($input, $form_url) {
         $message .= "Subject: " . $input['subject'] . "\n";
         $message .= "Message: " . $input['message'];
 
+		// Create subject line
+		$subject = "Website Contact Form -" . $input['subject'];
         if (preg_match('/[0-9]+/', $input['target-area'])) {
             // Send message to target area
-            $ret = CRU_Messaging::send_target_area_message($input['subject'],
+            $ret = CRU_Messaging::send_target_area_message($subject,
                                                            $input['email'],
                                                            $message,
                                                            intval($input['target-area']));
         } else {
             // Send general message to the default addresses
-            $ret = CRU_Messaging::send_target_area_message($input['subject'],
+            $ret = CRU_Messaging::send_target_area_message($subject,
                                                            $input['email'],
                                                            $message);
         }
