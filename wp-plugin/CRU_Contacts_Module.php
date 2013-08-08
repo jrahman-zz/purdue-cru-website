@@ -79,7 +79,7 @@ class CRU_Contacts_Module {
         $action_result = CRU_Contacts::edit_contact();
         $action_result["page"] = "admin.php?page=cru-contacts";
         if (CRU_Utils::get_request_param('ajax') === "true") {
-            $echo json_encode($action_result);
+            echo json_encode($action_result);
 			die();
         }
         return $action_result;
