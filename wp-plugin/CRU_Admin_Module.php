@@ -45,7 +45,7 @@ class CRU_Admin_Module {
      *
      */
     public function install_module() {
-        init_options();
+        $this->init_options();
     }
 
     /**
