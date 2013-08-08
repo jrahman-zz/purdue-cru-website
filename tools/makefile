@@ -8,20 +8,20 @@ all: build_zips
 
 build_zips: PurdueCruTheme.zip PurdueCruPlugin.zip
 
-PurdueCruTheme.zip: builds
-	zip -r PurdueCruTheme $(THEME_FOLDER); mv "PurdueCruTheme.zip" $(BUILD_FOLDER)   
+PurdueCruTheme.zip: builds $(wildcard $(THEME_FOLDER)/*)
+	zip -r -j PurdueCruTheme $(THEME_FOLDER); mv "PurdueCruTheme.zip" $(BUILD_FOLDER)   
 
-PurdueCruPlugin.zip: builds
-	zip -r PurdueCruPlugin $(PLUGIN_FOLDER); mv "PurdueCruPlugin.zip" $(BUILD_FOLDER)
+PurdueCruPlugin.zip: builds $(wildcard $(PLUGIN_FOLDER)/*)
+	zip -r -j PurdueCruPlugin $(PLUGIN_FOLDER); mv "PurdueCruPlugin.zip" $(BUILD_FOLDER)
 
 builds:
-	mkdir $(BUILD_FOLDER)
+	if [ ! -d $(BUILD_FOLDER) ]; then mkdir $(BUILD_FOLDER); fi
 
 clean:
-    
+	rm -f $(BUILD_FOLDER)/PurdueCruTheme.zip $(BUILD_FOLDER)/PurdueCruPlugin.zip  
 
 .PHONY: all
-.PHONY: build_zips
+.PHONY: builds
 .PHONY: clean
     
     
