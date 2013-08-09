@@ -193,17 +193,17 @@ class CRU_Small_Groups_Module {
             $index = 0;
             // Print out each group with alternating styles
             foreach ($small_groups as $group) { ?>
-        <tr <?php if($index++ % 2 == 1) echo("class=\"alternate\""); ?>>
+        <tr<?php if($index++ % 2 == 1) echo(" class=\"alternate\""); ?>>
         <td class="username column-username">
         <strong><?php echo($group['display_name']); ?></strong>
             <div class="row-actions">
-                <?php if(current_user_can("edit_small_groups")) { // Note that we need to create the URL with the group_id ?>
+                <?php if(current_user_can("edit_small_groups")) { ?>
             <span class="edit">
-                <a href="<?php echo(CRU_Small_Groups::edit_group_url($group['group_id'])); ?>">Edit</a> | </span>
+                <a href="<?php echo esc_attr(CRU_Small_Groups::edit_group_url($group['group_id'])); ?>">Edit</a> | </span>
                 <?php } ?>
-                <?php if (current_user_can("delete_small_groups")) { // Note that we need to create the URL with the group_id ?>
+                <?php if (current_user_can("delete_small_groups")) { ?>
             <span class="delete">
-                <a href="<?php echo(CRU_Small_Groups::delete_group_url($group['group_id'])); ?>">Delete</a>
+                <a href="<?php echo esc_attr(CRU_Small_Groups::delete_group_url($group['group_id'])); ?>">Delete</a>
             </span>
                 <?php } ?>
             </div>
@@ -279,7 +279,7 @@ Add Small Group
                 // Print out an <option> for each leader
                 foreach ($leaders as $leader) {
                 ?>
-                    <option value="<?php echo($leader['ID']);?>"><?php echo($leader['display_name']); ?></option>
+                    <option value="<?php echo esc_attr($leader['ID']);?>"><?php echo($leader['display_name']); ?></option>
                 <?php
                     }
                 ?>
@@ -322,7 +322,6 @@ Add Small Group
                 <option value="12:30PM">12:30PM</option>           
         
                 <?php
-
                 // Print out the time options from 1:00PM to 10:00PM
                 for ($i = 1; $i <= 10; $i++) {
                     for ($j = 0; $j < 2; $j++) {
@@ -355,7 +354,7 @@ Add Small Group
             <?php
                 // Print out the target areas the group could be a part of
                 foreach ($target_areas as $target_area) { ?>
-            <option value="<?php echo($target_area['area_id']); ?>"><?php echo($target_area['area_name']); ?></option>
+            <option value="<?php echo esc_attr($target_area['area_id']); ?>"><?php echo($target_area['area_name']); ?></option>
             <?php
                 }
             ?>
@@ -429,7 +428,7 @@ Edit Small Group
 <form class="ajax-form" method="post" name="edit-group" id="edit-group" action="<?php echo(admin_url('admin.php?page=cru-handle-action')); ?>">
     <input type="hidden" name="_cru_edit_small_group_nonce" value="<?php echo(wp_create_nonce("cru_edit_small_group-" . CRU_Utils::get_request_param('group_id') )); ?>">
     <input type="hidden" name="action" value="cru_edit_small_group">
-    <input type="hidden" name="group_id" value="<?php echo(CRU_Utils::get_request_param('group_id')); ?>">
+    <input type="hidden" name="group_id" value="<?php echo esc_attr(CRU_Utils::get_request_param('group_id')); ?>">
     <table class="form-table">
     <tbody>
     <tr class="form-field form-required">
@@ -439,7 +438,7 @@ Edit Small Group
                 <?php
                 foreach ($leaders as $leader) {
                 ?>
-                    <option value="<?php echo($leader['ID']);?>" <?php if ($leader['ID'] === $group['contact_id']) echo('selected="true"'); ?>><?php echo($leader['display_name']); ?></option>
+                    <option value="<?php echo esc_attr($leader['ID']);?>" <?php if ($leader['ID'] === $group['contact_id']) echo('selected="true"'); ?>><?php echo($leader['display_name']); ?></option>
                 <?php
                     }
                 ?>
@@ -450,13 +449,13 @@ Edit Small Group
         <th scope="row"><label for="day">Day <span class="description">(required)</span></label></th>  
         <td>
             <select name="day">
-            <option <?php if ($group['day'] == 'Monday') echo('selected="true"'); ?>>Monday</option>
-            <option <?php if ($group['day'] == 'Tuesday') echo('selected="true"'); ?>>Tuesday</option>
-            <option <?php if ($group['day'] == 'Wednesday') echo('selected="true"'); ?>>Wednesday</option>
-            <option <?php if ($group['day'] == 'Thursday') echo('selected="true"'); ?>>Thursday</option>
-            <option <?php if ($group['day'] == 'Friday') echo('selected="true"'); ?>>Friday</option>
-            <option <?php if ($group['day'] == 'Saturday') echo('selected="true"'); ?>>Saturday</option>
-            <option <?php if ($group['day'] == 'Sunday') echo('selected="true"'); ?>>Sunday</option>
+            <option<?php if ($group['day'] == 'Monday') echo(' selected="true"'); ?>>Monday</option>
+            <option<?php if ($group['day'] == 'Tuesday') echo(' selected="true"'); ?>>Tuesday</option>
+            <option<?php if ($group['day'] == 'Wednesday') echo(' selected="true"'); ?>>Wednesday</option>
+            <option<?php if ($group['day'] == 'Thursday') echo(' selected="true"'); ?>>Thursday</option>
+            <option<?php if ($group['day'] == 'Friday') echo(' selected="true"'); ?>>Friday</option>
+            <option<?php if ($group['day'] == 'Saturday') echo(' selected="true"'); ?>>Saturday</option>
+            <option<?php if ($group['day'] == 'Sunday') echo(' selected="true"'); ?>>Sunday</option>
             </select> 
         </td>
     </tr>
@@ -478,17 +477,16 @@ Edit Small Group
                 }
                 ?>
             
-                <option <?php if ($group['time'] == "12:00PM") echo('selected="true"'); ?>>12:00PM</option> 
-                <option <?php if ($group['time'] == "12:30PM") echo('selected="true"'); ?>>12:30PM</option>           
+                <option<?php if ($group['time'] == "12:00PM") echo(' selected="true"'); ?>>12:00PM</option> 
+                <option<?php if ($group['time'] == "12:30PM") echo(' selected="true"'); ?>>12:30PM</option>           
         
                 <?php
-
                 // Print out the time options from 1:00PM to 10:00PM
                 for ($i = 1; $i <= 10; $i++) {
                     for ($j = 0; $j < 2; $j++) {
 						$time = sprintf("%d:%002dPM", $i, $j * 30);
                 ?>                     
-                <option <?php if($group['time'] == $time) echo('selected="true"'); ?> value="<?php echo $time?>"><?php echo $time; ?></option>
+                <option<?php if($group['time'] == $time) echo(' selected="true"'); ?> value="<?php echo $time?>"><?php echo $time; ?></option>
                 <?php              
                     }
                 }
@@ -516,9 +514,9 @@ Edit Small Group
                 // Print out the target areas the group could be a part of
                 foreach ($target_areas as $target_area) {
                     if ($target_area['area_id'] === $group['area_id']) {
-                        echo('<option value="' . $target_area['area_id'] . '" checked=\"true\">' . $target_area['area_name'] . '</option>');
+                        echo('<option value="' . esc_attr($target_area['area_id']) . "\" checked=\"true\">" . $target_area['area_name'] . '</option>');
                     } else {
-                        echo('<option value="' . $target_area['area_id'] . '">' . $target_area['area_name'] . '</option>');
+                        echo('<option value="' . esc_attr($target_area['area_id']) . '">' . $target_area['area_name'] . '</option>');
                     }
                 }
             ?>

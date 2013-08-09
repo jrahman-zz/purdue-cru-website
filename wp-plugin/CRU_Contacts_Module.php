@@ -134,8 +134,8 @@ CRU Contacts
     <tr>
         <th><label for="contact_name">Name</label></th>
         <th><label for="contact_email">Email</label></th>
-        <th><label for="areas">Areas</labels></th>
-        <th><label for="contact_provider">Provider</th>
+        <th><label for="areas">Areas</label></th>
+        <th><label for="contact_provider">Provider</label></th>
         <th><label for="phone_number">Phone Number</label></th>
         <th><label for="test"></label></th>
         <th><label for="update"></label>
@@ -147,10 +147,10 @@ CRU Contacts
             foreach ($contacts as $contact) {
                 $contact_id = $contact['ID'];
             ?>
-    <tr <?php if($index++ % 2 == 1) echo(" class=\"alternate\""); ?>>
-        <form class="ajax-form" method="post" action=<?php echo(admin_url("admin.php?page=cru-handle-action")); ?>>
-        <input type="hidden" name="contact_id" value=<?php echo($contact['ID']); ?>>
-        <input type="hidden" name="_cru_edit_contact_nonce" value=<?php echo(wp_create_nonce("cru_edit_contact-$contact_id")); ?>>
+    <tr<?php if($index++ % 2 == 1) echo " class=\"alternate\""; ?>>
+        <form class="ajax-form" method="post" action="<?php echo admin_url("admin.php?page=cru-handle-action"); ?>">
+        <input type="hidden" name="contact_id" value="<?php echo esc_attr($contact['ID']); ?>">
+        <input type="hidden" name="_cru_edit_contact_nonce" value="<?php echo(wp_create_nonce("cru_edit_contact-$contact_id")); ?>">
         <input type="hidden" name="action" value="cru_edit_contact">
         <td>
             <?php echo($contact['display_name']); ?>
@@ -184,8 +184,8 @@ CRU Contacts
                 // Print a list of <option> tags for each provider
                 foreach ($providers as $provider) {
                 ?>
-                <option value="<?php echo($provider['provider_id']); ?>" <?php if ($contact['provider_id'] == $provider['provider_id']) echo('selected="true"'); ?>>
-                <?php echo($provider['provider_name']); ?>
+                <option value="<?php echo esc_attr($provider['provider_id']); ?>" <?php if ($contact['provider_id'] == $provider['provider_id']) echo('selected="true"'); ?>>
+                <?php echo esc_attr($provider['provider_name']); ?>
                 </option>
                 <?php             
                 }
@@ -204,15 +204,15 @@ CRU Contacts
                     $num = $matches[3];
                } 
             ?>
-            <input type="text" size="3" name="area_code" value="<?php echo($ac); ?>">-<input type="text" size="3" name="exchange_code" value="<?php echo($ec); ?>">-<input type="text" size="4" name="number" value="<?php echo($num); ?>">
+            <input type="text" size="3" name="area_code" value="<?php echo($ac); ?>">-<input type="text" size="3" name="exchange_code" value="<?php echo esc_attr($ec); ?>">-<input type="text" size="4" name="number" value="<?php echo esc_attr($num); ?>">
         </td>
         <td>
-            <p class="submit">
-            
+            <p class="submit">      
                 <a class="cru_button_link" href="<?php 
                 $url = "/admin.php?page=cru-handle-action&action=cru_send_test_text&contact_id="
-                      . urlencode($contact_id) . "&_cru_send_test_text_nonce="
-                      . urlencode(wp_create_nonce("cru_send_test_text-$contact_id")); 
+                      . $contact_id . "&_cru_send_test_text_nonce="
+                      . wp_create_nonce("cru_send_test_text-$contact_id");
+                $url = urlencode($url); 
                 echo(admin_url($url)); ?>">
                     <input type="button" id="test_button" class="button-primary" value="Test">
                 </a>

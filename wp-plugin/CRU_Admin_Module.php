@@ -252,75 +252,75 @@ class CRU_Admin_Module {
     /* Email options */
     function email_address_option() {
         echo '<input type="text" name="cru-email-address" id="cru-email-address" value="'
-        . get_option('cru-email-address', "") .'"/>'
+        . esc_attr(get_option('cru-email-address', "")) .'"/>'
         . '</br><span class="description">Address from which contact form messages will be sent</span>';
     }
 
     function email_password_option() {
         echo '<input type="text" name="cru-email-password" id="cru-email-password" value="'
-        . get_option('cru-email-password', "") .'"/>'
+        . esc_attr(get_option('cru-email-password', "")) .'"/>'
         . '</br><span class="description">Password for the account from which contact form messages will be sent</span>';
     }
 
     function email_host_option() {
         echo '<input type="text" name="cru-email-host" id="cru-email-host" value="'
-        . get_option('cru-email-host', "") .'"/>'
+        . esc_attr(get_option('cru-email-host', "")) .'"/>'
         . '</br><span class="description">Host to send contact form emails from (use ssl://smtphost for ssl)</span>';
     }
 
     function email_port_option() {
         echo '<input type="text" name="cru-email-port" id="cru-email-port" value="'
-        . get_option('cru-email-port', "") .'"/>'
+        . esc_attr(get_option('cru-email-port', "")) .'"/>'
         . '</br><span class="description">Port on smtp host to send email</span>';
     }
 
     function email_default_address1_option() {
         echo '<input type="text" name="cru-email-default-address1" id="cru-email-default-address1" value="'
-        . get_option('cru-email-default-address1', "") .'"/>'
+        . esc_attr(get_option('cru-email-default-address1', "")) .'"/>'
         . '</br><span class="description">Default address to send all contact form submissions to</span>';
     }
 
     function email_default_address2_option() {
         echo '<input type="text" name="cru-email-default-address2" id="cru-email-default-address2" value="'
-        . get_option('cru-email-default-address2', "") .'"/>'
+        . esc_attr(get_option('cru-email-default-address2', "")) .'"/>'
         . '</br><span class="description">Default address to send all contact form submissions to</span>';
     }
 
     function email_default_address3_option() {
         echo '<input type="text" name="cru-email-default-address3" id="cru-email-default-address3" value="'
-        . get_option('cru-email-default-address3', "") .'"/>'
+        . esc_attr(get_option('cru-email-default-address3', "")) .'"/>'
         . '</br><span class="description">Default address to send all contact form submissions to</span>';
     }
 
     /* Facebook options */
     function facebook_app_id_option() {
         echo '<input type="text" name="cru-facebook-app-id" id="cru-facebook-app-id" value="'
-        . get_option('cru-facebook-app-id', "") .'"/>'
+        . esc_attr(get_option('cru-facebook-app-id', "")) .'"/>'
         . '</br><span class="description">Facebook App ID</span>';
     }
 
     function facebook_app_secret_option() {
         echo '<input type="text" name="cru-facebook-app-secret" id="cru-facebook-app-secret" value="'
-        . get_option('cru-facebook-app-secret', "") .'"/>'
+        . esc_attr(get_option('cru-facebook-app-secret', "")) .'"/>'
         . '</br><span class="description">Facebook API App Secret</span>';
     }
 
     function facebook_feed_option() {
         echo '<input type="text" name="cru-facebook-feed" id="cru-facebook-feed" value="'
-        . get_option('cru-facebook-feed', "") .'"/>'
+        . esc_attr(get_option('cru-facebook-feed', "")) .'"/>'
         . '</br><span class="description">ID of the Facebook object to pull events from</span>';
     }
 
     /* Captcha options */
     function captcha_public_key_option() {
         echo '<input type="text" name="cru-captcha-public-key" id="cru-captcha-public-key" value="'
-        . get_option('cru-captcha-public-key', "") .'"/>'
+        . esc_attr(get_option('cru-captcha-public-key', "")) .'"/>'
         . '</br><span class="description">Public key for captcha service (Recaptcha)</span>';
     }
 
     function captcha_private_key_option() {
         echo '<input type="text" name="cru-captcha-private-key" id="cru-captcha-private-key" value="'
-        . get_option('cru-captcha-private-key', "") .'"/>'
+        . esc_attr(get_option('cru-captcha-private-key', "")) .'"/>'
         . '</br><span class="description">Private key for captcha service (Recaptcha)</span>';
     }
 
