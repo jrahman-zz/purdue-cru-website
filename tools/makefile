@@ -1,8 +1,8 @@
 
 
-BUILD_FOLDER=/home/jprahman/Dropbox/CRU_Website/Builds
-PLUGIN_FOLDER=/home/jprahman/Dropbox/CRU_Website/wp-plugin
-THEME_FOLDER=/home/jprahman/Dropbox/CRU_Website/wp-theme
+BUILD_FOLDER=../Builds
+PLUGIN_FOLDER=../wp-plugin/PurudeCruPlugin
+THEME_FOLDER=../wp-theme/PurudeCruTheme
 
 all: build_zips
 
