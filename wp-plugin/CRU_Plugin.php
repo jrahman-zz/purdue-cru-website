@@ -1,51 +1,16 @@
 <?php
 
-
-/*
-Plugin Name: Purdue CRU Wordpress Plugin
-Description: Plugin for managing Purdue CRU Small Groups, Target Areas, and Contact information
-Version: 1.0
-Author: Jason P Rahman (jprahman93@gmail.com, rahmanj@purdue.edu)
-*/
-
-
 // Check if this function exists to see if we are being invoked as a plugin
 // in wordpress context, otherwise we need to bailout and not output anything
 if (!function_exists('add_action')) {
     exit(1);
 }
 
-// Export the path to the plugin to allow themes to access plugin files
-define('PURDUE_CRU_PLUGIN_PATH', plugin_dir_path(__FILE__) );
-
-require_once("CRU_Small_Groups_Module.php");
-require_once("CRU_Admin_Module.php");
-require_once("CRU_Target_Areas_Module.php");
-require_once("CRU_Contacts_Module.php");
-require_once("CRU_Action_Dispatcher.php");
 require_once("CRU_Utils.php");
-
-/**
- * Set the timezone for eastern time
- */
-date_default_timezone_set('America/Indianapolis');
 
 global $cru_db_version;
 $cru_db_version = "1.0";
 
-$dispatcher = new CRU_Action_Dispatcher();
-$small_groups_module = new CRU_Small_Groups_Module($dispatcher);
-$target_areas_module = new CRU_Target_Areas_Module($dispatcher);
-$contacts_module = new CRU_Contacts_Module($dispatcher);
-$admin_module = new CRU_Admin_Module($dispatcher);
-
-$modules = array($dispatcher,
-                $small_groups_module,
-                $target_areas_module,
-                $contacts_module,
-                $admin_module);
-
-$CRU_plugin = new CRU_Plugin($modules);
 
 /**
  * Primary class for the Purdue CRU Website Plugin
@@ -71,7 +36,6 @@ class CRU_Plugin {
                 }
             }
         }
-
 
         // Enqueue scripts and style sheets
         add_action('admin_print_styles', array($this, 'cru_add_admin_styles'));
