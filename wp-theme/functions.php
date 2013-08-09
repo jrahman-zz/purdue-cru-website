@@ -337,7 +337,6 @@ function cru_events_widget($feed) {
         $events = cru_get_events();
     } catch (Exception $e) {
         cru_log(CRU_ERROR, "Exception while retrieving events");
-        echo "Event exception";
     } ?>
 
 	<div id="events">
@@ -345,7 +344,7 @@ function cru_events_widget($feed) {
 			<span id="events-title" class="events-header-item">Upcoming Events</span>
 			<a id="events-link" class="events-header-item" href="http://www.facebook.com/PurdueCru/events" target="_blank" title="More Events On Facebook">
 				More Events On 					
-				<img id="facebook-icon" src="<?php echo get_template_directory_uri()?>/images/facebook-icon.png" width="16" height="16" alt="Facebook">
+				<img id="facebook-mini-icon" src="<?php echo get_template_directory_uri()?>/images/facebook-icon.png" width="16" height="16" alt="Facebook">
 			</a>
 			<div class="clearfix"></div>
 		</div>
