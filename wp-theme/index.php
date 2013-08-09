@@ -14,7 +14,7 @@ get_header();
 			<div id="slide-control" class="slide-control">
 			<ul class="slides">
 			<li class="slide">
-				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/berlin-project-2.jpg">
+				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/berlin-project-2.jpg" alt="Purdue Cru is an authentic community of students passionate about sharing Jesus Christ.">
 				<div class="slide-message">
 					<h1 class="slide-header">Christ Centered Community</h1>				
 					<p class="slide-text">We are an authentic community of students at Purdue passionate about sharing Jesus Christ. Get in touch with a small group in your residence hall, visit us Friday nights, or attend one of our many retreats and conferences to learn more!
@@ -24,7 +24,7 @@ get_header();
 				<div class="clearfix"></div>
 			</li>
 			<li class="slide" style="display: none">
-				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/gtb-project-1.jpg">
+				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/gtb-project-1.jpg" alt="Sign up for an exciting adventure on a summer project.">
 				<div class="slide-message">
 					<h1 class="slide-header">Summer Projects</h1>				
 					<p class="slide-text">Summer projects are 1-12 week trips where students develop a deeper walk with God, live in life-transforming community, receive training in communicating your faith, and experience a new adventure! </p>
@@ -33,7 +33,7 @@ get_header();
 				<div class="clearfix"></div>
 			</li>
 			<li class="slide" style="display: none">
-				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/cru-logo.jpg">
+				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/cru-logo.jpg" alt="Join the Purdue Cru community Friday nights at 7:00PM.">
 				<div class="slide-message">
 					<h1 class="slide-header">Friday Night Cru</h1>				
 					<p class="slide-text">Friday Night Cru is our weekly meeting where we gather for worship, teaching from the Bible, and discussion about how Biblical principles apply to our life at college. Join us in EE129 at 7pm! </p>
