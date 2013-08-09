@@ -9,10 +9,10 @@ all: build_zips
 build_zips: PurdueCruTheme.zip PurdueCruPlugin.zip
 
 PurdueCruTheme.zip: builds $(wildcard $(THEME_FOLDER)/*)
-	zip -r -j PurdueCruTheme $(THEME_FOLDER); mv "PurdueCruTheme.zip" $(BUILD_FOLDER)   
+	cd $(THEME_FOLDER); zip -r PurdueCruTheme *; mv "PurdueCruTheme.zip" $(BUILD_FOLDER)   
 
 PurdueCruPlugin.zip: builds $(wildcard $(PLUGIN_FOLDER)/*)
-	zip -r -j PurdueCruPlugin $(PLUGIN_FOLDER); mv "PurdueCruPlugin.zip" $(BUILD_FOLDER)
+	cd $(PLUGIN_FOLDER); zip -r PurdueCruPlugin *; mv "PurdueCruPlugin.zip" $(BUILD_FOLDER)
 
 builds:
 	if [ ! -d $(BUILD_FOLDER) ]; then mkdir $(BUILD_FOLDER); fi
