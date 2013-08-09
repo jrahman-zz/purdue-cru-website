@@ -1,8 +1,8 @@
 
 
-BUILD_FOLDER=../Builds
-PLUGIN_FOLDER=../wp-plugin/PurudeCruPlugin
-THEME_FOLDER=../wp-theme/PurudeCruTheme
+BUILD_FOLDER=../../Builds
+PLUGIN_FOLDER=../wp-plugin/PurdueCruPlugin
+THEME_FOLDER=../wp-theme/PurdueCruTheme
 
 all: build_zips
 
