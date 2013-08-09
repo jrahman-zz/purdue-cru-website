@@ -343,8 +343,8 @@ ul.sub-menu .menu-item + .menu-item {
  * Content styles
  */
 .page-section {
-	padding-top: 30px;
-	padding-bottom: 25px;
+	padding-top: 25px;
+	padding-bottom: 0px;
 }
 
 .content-wrapper {
@@ -509,8 +509,13 @@ a.flex-prev {
 .info-section {
 	background-color: rgb(230, 230, 230);
 	/* background-image: url('backgrounds/billie_holiday.png'); */
-    background-image: url('backgrounds/seamlesstexture13_500.jpg');  
+    background-image: url('backgrounds/seamlesstexture13_500.jpg');
+    padding-bottom: 25px;
     position: relative;
+}
+
+.info-wrapper {
+    /* border-top: 4px solid #007398 */
 }
 
 
@@ -568,7 +573,7 @@ a.flex-prev {
 .content-section {
 	background-image: url('backgrounds/seamlesstexture13_500.jpg');
 	padding-top: 25px;
-	padding-bottom: 15px;
+	padding-bottom: 25px;
 }
 
 .page-content {
