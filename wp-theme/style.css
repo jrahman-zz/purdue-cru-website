@@ -969,6 +969,7 @@ img.event-icon {
 		display: none;
 		height: auto;
 		margin: auto;
+        top: 40px;
 		position: absolute;
 		width: 100%;
 		z-index: 100;
@@ -1022,10 +1023,6 @@ img.event-icon {
 	.menu-item.js > a.hover {
 		background-color: #f9b625;
 	}
-
-    .menu-item.js:hover {
-        background-color: transparent;
-    }
 
 	.menu-item.js > a {
 		border-bottom: 1px solid #C0C0C0;
