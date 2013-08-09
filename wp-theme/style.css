@@ -226,7 +226,7 @@ div.social-header {
 /* Nav menu */
 
 .menu, .menu-item, .page_item, .current_page_item, .current_page_parent, .sub-menu {
-	text-rendering: optimizespeed;
+	/* Remove since validation complains text-rendering: optimizespeed; */
 } 
 
 #menu-icon, #menu-header {
@@ -805,7 +805,7 @@ span.small-groups-header, span.area-contacts-header {
 	border-top: thin solid rgb(68, 68, 68);
 	color: rgb(207, 207, 207);
 	height: 265px;
-	overflow-x: hiden;
+	overflow-x: hidden;
 	overflow-y: auto;
 }
 
@@ -940,7 +940,7 @@ img.event-icon {
 	 */
 	.menu-container.js {
 		background-color: #666062;
-		height: auto;
+		height: 40px;
 		text-align: right;		
 		width: auto;
 		position: relative;
@@ -1024,7 +1024,7 @@ img.event-icon {
 	}
 
     .menu-item.js:hover {
-        background-color: none;
+        background-color: transparent;
     }
 
 	.menu-item.js > a {
