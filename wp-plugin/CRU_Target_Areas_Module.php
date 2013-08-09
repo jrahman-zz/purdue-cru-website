@@ -240,16 +240,19 @@ class CRU_Target_Areas_Module {
             <div class="row-actions">
                 <?php 
 					// Conditionally print the edit link
-					//
 				if(current_user_can("edit_target_areas")) { 
 				?>
-                <span class="edit"><a href="<?php echo(CRU_Target_Areas::edit_target_area_url($area_id)); ?>">Edit</a> | </span>
+                <span class="edit">
+                    <a href="<?php echo esc_attr(CRU_Target_Areas::edit_target_area_url($area_id)); ?>">Edit</a> | 
+                </span>
                 <?php
                 }
 				// Conditionally print the delete link
 				//
                 if (current_user_can("delete_target_areas")) { ?>
-                <span class="delete"><a href="<?php echo(CRU_Target_Areas::delete_target_area_url($area_id)); ?>">Delete</a></span>
+                <span class="delete">
+                    <a href="<?php echo esc_attr(CRU_Target_Areas::delete_target_area_url($area_id)); ?>">Delete</a>
+                </span>
                 <?php 
                 }
                 ?>
@@ -268,7 +271,7 @@ class CRU_Target_Areas_Module {
                     wp_die(__("Failed to retrieve area-contact affiliations from the database"));
                 } else {
                     foreach($area_contacts as $contact) {
-                        echo("<li>" .$contact['display_name'] . "</li>\n");
+                        echo("<li>" . $contact['display_name'] . "</li>\n");
                     }
                 }
                 ?>
@@ -309,14 +312,12 @@ class CRU_Target_Areas_Module {
             $area_contacts_table = $table_prefix . CRU_Utils::_area_contacts_table;
 
             // Check if the area even exists
-            //
             $area_id = CRU_Utils::get_request_param('area_id');
             $table_name = $table_prefix . CRU_Utils::_target_areas_table;
             $area_query = $wpdb->prepare("SELECT * FROM $table_name WHERE area_id = %s", $area_id);
             $area = $wpdb->get_row($area_query, ARRAY_A);
          
             // Fetch the cru contacts
-            //
             $cru_contacts = CRU_Contacts::get_contacts_short();
 
             // Fetch the cru contacts who are affiliated with this area
@@ -341,16 +342,16 @@ Edit Target Area
 <?php CRU_Utils::print_action_result($action_result); ?>
                       
 <table class="form-table">
-<form class="ajax-form" name="edit_area" id="edit_area" method="post" action="<?php echo(admin_url('admin.php?page=cru-handle-action&action=cru_edit_target_area')); ?>">
-    <input type="hidden" name="_cru_edit_target_area_nonce" value="<?php echo(wp_create_nonce("cru_edit_target_area-$area_id")); ?>">
+<form class="ajax-form" name="edit_area" id="edit_area" method="post" action="<?php echo esc_attr(admin_url('admin.php?page=cru-handle-action&action=cru_edit_target_area')); ?>">
+    <input type="hidden" name="_cru_edit_target_area_nonce" value="<?php echo esc_attr(wp_create_nonce("cru_edit_target_area-$area_id")); ?>">
     <input type="hidden" name="action" value="cru_edit_target_area">
-    <input type="hidden" name="area_id" value="<?php echo($area_id); ?>">
+    <input type="hidden" name="area_id" value="<?php echo esc_attr($area_id); ?>">
     <table class="form-table">
     <tbody>
         <tr class="form-field form-required">
             <th scope="row"><label for="area_name">Target Area Name <span class="description">(required)</span></label></th>
             <td>
-                <input type="text" class="regular-text" name="area_name" id="area_name" value="<?php echo($area['area_name']); ?>">
+                <input type="text" class="regular-text" name="area_name" id="area_name" value="<?php echo esc_attr($area['area_name']); ?>">
             </td>
         </tr>    
     </tbody>
@@ -375,7 +376,7 @@ View Affiliations
                 // Printout the affiliated users
                 $index = 0;
                 foreach($affiliated_users as $user) { ?>
-    <tr class="<?php if ($index++ % 2 == 0) echo('class="alternate"'); ?>">
+    <tr<?php if ($index++ % 2 == 0) echo(' class="alternate"'); ?>>
         <td class="username column-username">
                     <?php echo($user['display_name']); ?>
         </td>
@@ -383,11 +384,14 @@ View Affiliations
         <?php echo (CRU_Target_Areas::get_affiliation_string($user['affiliation_type'])); ?>
         </td>
         <td class="username column-username">
-            <form class="ajax-form" name="delete_affiliation" method="post" action="<?php echo(CRU_Target_Areas::delete_affiliation_url($area_id)); ?>">
-            <input type="hidden" name="contact_id" value="<?php echo($user['contact_id']); ?>">
-            <input type="hidden" name="area_id" value="<?php echo($area_id); ?>">
-            <input type="hidden" name="affiliation_type" value="<?php echo($user['affiliation_type']); ?>">
-            <input type="hidden" name="_cru_delete_affiliation_nonce" value="<?php echo(CRU_Target_Areas::delete_affiliation_nonce($area_id, $user['contact_id'], $user['affiliation_type'])); ?>">
+            <form class="ajax-form" name="delete_affiliation" method="post" action="<?php echo esc_attr(CRU_Target_Areas::delete_affiliation_url($area_id)); ?>">
+            <input type="hidden" name="contact_id" value="<?php echo esc_attr($user['contact_id']); ?>">
+            <input type="hidden" name="area_id" value="<?php echo esc_attr($area_id); ?>">
+            <input type="hidden" name="affiliation_type" value="<?php echo esc_attr($user['affiliation_type']); ?>">
+            <?php $nonce = CRU_Target_Areas::delete_affiliation_nonce($area_id,
+                                                                      $user['contact_id'],
+                                                                      $user['affiliation_type']); ?>
+            <input type="hidden" name="_cru_delete_affiliation_nonce" value="<?php echo esc_attr($nonce); ?>">
             <p class="submit">
                 <input class="button button-primary" id="delete_affiliation" name="delete_affiliation" value="Delete Affiliation" type="submit">
             </p>
@@ -404,8 +408,8 @@ Add Affiliation
 </h2>
 
 <form class="ajax-form" name="add_affiliation" id="add_affiliation" method="post" action="<?php echo(admin_url('admin.php?page=cru-handle-action&action=cru_add_affiliation')); ?>">
-    <input type="hidden" name="area_id" value="<?php echo(CRU_Utils::get_request_param('area_id')); ?>">
-    <input type="hidden" name="_cru_add_affiliation_nonce" value="<?php echo(wp_create_nonce("cru_add_affiliation")); ?>">
+    <input type="hidden" name="area_id" value="<?php echo esc_attr(CRU_Utils::get_request_param('area_id')); ?>">
+    <input type="hidden" name="_cru_add_affiliation_nonce" value="<?php echo esc_attr(wp_create_nonce("cru_add_affiliation")); ?>">
     <table class="wp-list-table widefat fixed" cellspacing="0">
         <thead>
             <tr>
@@ -420,7 +424,7 @@ Add Affiliation
                 <?php
                 foreach ($cru_contacts as $contact) {
                 ?>
-                <option value="<?php echo $contact['ID']; ?>"><?php echo $contact['display_name']; ?></option>
+                <option value="<?php echo esc_attr($contact['ID']); ?>"><?php echo $contact['display_name']; ?></option>
                 <?php
                 }
                 ?>
@@ -431,7 +435,7 @@ Add Affiliation
 				<?php
                     // Assumption made here that there is always at least one affiliation type
 					foreach (CRU_Utils::$_affiliation_names as $affiliation => $name) { ?>
-					<option value="<?php echo $affiliation; ?>"><?php echo $name; ?></option>
+					<option value="<?php echo esc_attr($affiliation); ?>"><?php echo $name; ?></option>
 				<?php }?>
                 </select>
             </td> 
@@ -483,8 +487,8 @@ Add Target Area
         wp_die(__("Failed to retrieve any CRU contacts"));
     } else {          
 ?>
-<form class="ajax-form" name="add-area" id="add-area" method="post" action="<?php echo(admin_url('admin.php?page=cru-handle-action&action=cru_add_target_area')); ?>">
-    <input type="hidden" name="_cru_add_target_area_nonce" value="<?php echo(wp_create_nonce("cru_add_target_area")); ?>">
+<form class="ajax-form" name="add-area" id="add-area" method="post" action="<?php echo esc_attr(admin_url('admin.php?page=cru-handle-action&action=cru_add_target_area')); ?>">
+    <input type="hidden" name="_cru_add_target_area_nonce" value="<?php echo esc_attr(wp_create_nonce("cru_add_target_area")); ?>">
     <input type="hidden" name="action" value="cru_add_target_area">
     <table class="form-table">
     <tbody>
@@ -502,7 +506,7 @@ Add Target Area
                 // Print out a list of <option> tags for each CRU contact
                 foreach ($cru_users as $contact) {
             ?>
-                <option value="<?php echo($contact['ID']); ?>"><?php echo($contact['display_name']); ?></option>
+                <option value="<?php echo esc_attr($contact['ID']); ?>"><?php echo($contact['display_name']); ?></option>
             <?php
                 }
             ?>
