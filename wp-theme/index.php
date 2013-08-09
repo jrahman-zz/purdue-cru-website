@@ -27,7 +27,7 @@ get_header();
 				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/gtb-project-1.jpg" alt="Sign up for an exciting adventure on a summer project.">
 				<div class="slide-message">
 					<h1 class="slide-header">Summer Projects</h1>				
-					<p class="slide-text">Summer projects are 1-12 week trips where students develop a deeper walk with God, live in life-transforming community, receive training in communicating your faith, and experience a new adventure! </p>
+					<p class="slide-text">Summer projects are 1-12 week trips where students develop a deeper walk with God, live in life-transforming community, receive training in communicating their faith, and experience a new adventure! </p>
 					<a href="http://www.gosummerproject.com" class="button slide-button">Learn More</a>
 				</div>
 				<div class="clearfix"></div>
