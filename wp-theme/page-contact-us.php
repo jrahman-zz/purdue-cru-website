@@ -57,13 +57,13 @@ Template Name: Contact Us
 
 					<p class="contact-form">
 					<label for="name" class="contact-form">Name</label>
-                    <em id="contact-form-name-error" class="contact-form-error <?php if (!isset($invalid_fields['name'])) echo "hidden"; ?>"></br>Please enter your name</em></br>
-					<input id="name" class="contact-form" type="text" name="name"></br>
+                    <em id="contact-form-name-error" class="contact-form-error <?php if (!isset($invalid_fields['name'])) echo "hidden"; ?>"><br />Please enter your name</em><br />
+					<input id="name" class="contact-form" type="text" name="name"><br />
 					</p>
 
 					<p class="contact-form">
 					<label for="email" class="contact-form">Email</label>
-                    <em id="contact-form-email-error" class="contact-form-error <?php if (!isset($invalid_fields['email'])) echo "hidden"; ?>"></br>Invalid email address</em></br>
+                    <em id="contact-form-email-error" class="contact-form-error <?php if (!isset($invalid_fields['email'])) echo "hidden"; ?>"><br />Invalid email address</em><br />
 					<input id="email" class="contact-form" type="text" name="email">
 					</p>
 
@@ -73,7 +73,7 @@ Template Name: Contact Us
                     ?>
 
 					<p class="contact-form">
-					<label for="target-area" class="contact-form">Residence Hall <em class="contact-form">(optional)</em></label></br>
+					<label for="target-area" class="contact-form">Residence Hall <em class="contact-form">(optional)</em></label><br />
 					<select id="target-area" class="contact-form" name="target-area">
 						<option value="">--</option>
 					<?php
@@ -92,13 +92,13 @@ Template Name: Contact Us
 
 					<p class="contact-form">
 					<label for="subject" class="contact-form">Subject</label>
-                    <em id="contact-form-subject-error" class="contact-form-error <?php if (!isset($invalid_fields['subject'])) echo "hidden"; ?>"></br>Please include a subject</em></br>
+                    <em id="contact-form-subject-error" class="contact-form-error <?php if (!isset($invalid_fields['subject'])) echo "hidden"; ?>"><br />Please include a subject</em><br />
 					<input id="subject" class="contact-form" type="text" name="subject">
 					</p>
 
 					<p class="contact-form">
 					<label for="message" class="contact-form">Message</label>
-                    <em id="contact-form-message-error" class="contact-form-error <?php if (!isset($invalid_fields['message'])) echo "hidden"; ?>"></br>Please include a message</em></br>
+                    <em id="contact-form-message-error" class="contact-form-error <?php if (!isset($invalid_fields['message'])) echo "hidden"; ?>"><br />Please include a message</em><br />
 					<textarea id="message" class="contact-form" style="resize: none" rows="10" cols="50" name="message"></textarea>
 					</p>
                 <?php $public_key = get_option('cru-captcha-public-key',''); ?>	
@@ -130,7 +130,7 @@ Template Name: Contact Us
 			} else {
 			?>
 			<p class="success-message">
-			We've received your message, and we'll be in touch soon.</br></br>
+			We've received your message, and we'll be in touch soon.<br /><br />
 			Thank you for your interest in Purdue Cru!
 			</p>
 			<a class="button" href="<?php echo get_home_url(); ?>">Back to the home page</a>
