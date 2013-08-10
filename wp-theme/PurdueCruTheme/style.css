@@ -147,13 +147,12 @@ a.button:hover {
 }
 
 #logo {
+    background: url('images/cru_logo_lockup.gif') no-repeat;
 	float: left;
 	margin-left: 15px;
 	margin-top: 15px;
 	margin-bottom: 0px;
-}
-
-#logo-img {
+    
 	width: 180px;
     height: 150px;
 }
@@ -659,7 +658,7 @@ textarea.contact-form {
 }
 /* End of contact form */
 
-/** 
+/*
  * Small groups page
  */
 span.area-name {
@@ -757,7 +756,6 @@ span.small-groups-header, span.area-contacts-header {
 	text-align: left;
 	padding: 8px;
 }
-
 
 .events-header-item, .events-error {
 	color: rgb(207, 207, 207);
@@ -902,9 +900,7 @@ img.event-icon {
 	#background-bar-1, #background-bar-2 {
 	}
 
-	/*
-	 * Header 
-	 */
+	/* Header */
 	#header {
 		padding: 0px;
 		padding-top: 5px;
@@ -940,9 +936,7 @@ img.event-icon {
 	}
 	/* End of header */
 
-	/* 
-	 *	Nav menu js 
-	 */
+	/* Nav menu js */
 	.menu-container.js {
 		background-color: #666062;
 		height: 40px;
@@ -989,8 +983,6 @@ img.event-icon {
 		width: auto;
 	}
 
-    
-
 	/* Menu item style */
 	.menu-item.js, .menu-item.js:hover, ul.sub-menu .menu-item.js, ul.sub-menu .menu-item.js:hover {
 		background-color: #666062;
@@ -1012,7 +1004,6 @@ img.event-icon {
         top: auto;
 	}
 
-	
 	/* Style menu items */
 	.menu-item.js, ul.sub-menu .menu-item.js, .menu-item.js:hover, ul.sub-menu .menu-item.js:hover {
 		border-radius: 0px;
@@ -1038,9 +1029,7 @@ img.event-icon {
 	}
 	/* end nav-menu js */
 
-	/* 
-	 * Nav menu no-js
-	 */
+	/* Nav menu no-js */
 	#menu-icon.no-js, #menu-header.no-js {
 		display: none;
 	}
@@ -1122,9 +1111,7 @@ img.event-icon {
 	}
 	/* End of navmenu no js */
 
-	/* 
-	 * Content
-	 */
+	/* Content */
 	.page-section {
 		background-image: none;
 		padding: 0px;
@@ -1183,8 +1170,8 @@ img.event-icon {
 		min-height: 0px;
 		margin-top: 5px;
 		margin-bottom: 10px;
-		margin-left: 5px;
-		margin-right: 5px;
+		margin-left: 3px;
+		margin-right: 3px;
 		padding: 0px;
 		padding-top: 4px;
 		padding-bottom: 4px;
@@ -1207,9 +1194,7 @@ img.event-icon {
 		margin: auto;
 	}
 
-	/*
-	 * Events 
-	 */
+	/* Events */
 	#events {
 		background-color: rgb(51, 51, 51);
 		border-radius: 5px;
@@ -1219,14 +1204,11 @@ img.event-icon {
 		margin-left: auto;
 		margin-right: auto;
 		padding: 0px;
-		min-width: 255px;
+		min-width: 235px;
 		max-width: 325px;
 	}
 
-		
-	/* 
-	 * Footer 
- 	 */
+	/* Footer */
 	#footer {
 		height: auto;
         padding-top: 10px;
@@ -1248,6 +1230,123 @@ img.event-icon {
 		line-height: 45px;
 		outline: 0;
 	}
+}
+
+/*
+ * Narrow mobile layout 
+ */
+@media screen and (max-width: 350px) {
+
+    /* Generic tags, etc */
+    p {
+        font-size: 14px;
+        line-height: 18px;
+        margin-bottom: 7px;
+    }
+
+    /* Header */
+    div#logo {
+        background: url('images/cru-logo-small.jpg') no-repeat;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        width: 195px;
+        height: 112px;
+    }
+
+    div#background-bar-1 {
+        height: 4px;
+    }
+
+    /* Menu */
+
+    /* Nav menu js */
+	.menu-container.js {
+		height: 30px;
+	}
+
+    ul.menu.js {
+        border-top: 4px solid #f9b625;
+        top: 30px;
+    }
+	
+	/* Set up the dropdown */
+	#menu-icon.js, #menu-header.js {
+		line-height: 30px;
+	}
+
+    #menu-icon img {
+        height: 30px;
+        width: 30px;
+    }
+
+    /* Content */
+	.page-content {
+		border-bottom: 2px dotted #f9b625;
+		padding-top: 8px;
+		padding-bottom: 5px;
+		width: auto;
+	}
+
+	.page-title {
+		margin-top: 5px;
+		margin-bottom: 5px;
+		padding-bottom: 2px;
+	}
+
+    .content-wrapper {
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+
+    /* Info section */
+    .info-header {
+        margin-bottom: 2px;
+        padding-bottom: 2px;
+    }
+
+    .info-column {
+        border-bottom: 0px solid white;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        padding: 0px;
+    }
+
+    /* Events */
+    div#events {
+        height: 215px;
+    }
+
+    div#events-header {
+        height: 20px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    div#events-container {
+        height: 185px;
+    }
+
+    div.event {
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+
+    .event-text {
+	    font-size: 12px;
+	    line-height: 15px;
+    }
+
+    img.event-icon {
+        height: 32px;
+        width: 32px;
+    }
+
+    .events-error {
+        font-weight: 400;
+        margin-top: 40px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 }
 
 /* End style.css */

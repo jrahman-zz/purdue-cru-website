@@ -47,11 +47,10 @@ if ( !defined('ABSPATH')) exit;
 	<a id="top" name="top"></a>
 	<div id="header">
 		<div id="header-wrapper">
-			<div id="logo" class="no-js">
-				<a href="<?php echo get_home_url(); ?>">
-					<img id="logo-img" src="<?php echo get_template_directory_uri(); ?>/images/cru_logo_lockup.gif" width="180" height="150" alt="Purdue CRU">
-				</a>
+            <a href="<?php echo get_home_url(); ?>">
+			<div id="logo" class="no-js">	
 			</div>
+            </a>
 
 			<div id="friday-night" class="no-js">
 				Join us Fridays @ 7:00PM in EE129
