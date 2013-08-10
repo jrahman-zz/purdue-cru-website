@@ -20,7 +20,7 @@ modification, are permitted provided that the following conditions are met:
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    * Neither the name of the <organization> nor the
+    * Neither the name of the PurdueCru nor the
       names of its contributors may be used to endorse or promote products
       derived from this software without specific prior written permission.
 
@@ -130,9 +130,7 @@ a.button:hover {
 	opacity: 0.8;
 }
 
-/*
- * Header
- */
+/* Header */
 #header {
 	background-color: white;
 	position: relative;
@@ -223,7 +221,6 @@ div.social-header {
 }
 
 /* Nav menu */
-
 .menu, .menu-item, .page_item, .current_page_item, .current_page_parent, .sub-menu {
 	/* Remove since validation complains text-rendering: optimizespeed; */
 } 
@@ -338,9 +335,7 @@ ul.sub-menu .menu-item + .menu-item {
 }
 
 
-/* 
- * Content styles
- */
+/* Content styles */
 .page-section {
 	padding-top: 25px;
 	padding-bottom: 0px;
@@ -362,9 +357,7 @@ ul.sub-menu .menu-item + .menu-item {
     
 }
 
-/*
- * Home page content
- */
+/* Home page content */
 
 /* CRU Frame styles */
 .frame-border.no-js {
@@ -394,9 +387,7 @@ ul.sub-menu .menu-item + .menu-item {
 	right: 0px;
 }
 
-/*
- * Slides
- */
+/* Slides */
 .slide-sidebar {
     background-color: #666062;
     height: 320px;
@@ -502,9 +493,7 @@ a.flex-prev {
 /* End of slides */
 
 
-/*
- * Info section
- */
+/* Info section */
 .info-section {
 	background-color: rgb(230, 230, 230);
 	/* background-image: url('backgrounds/billie_holiday.png'); */
@@ -566,9 +555,7 @@ a.flex-prev {
 /* End of info section */
 /* End of home page content */
 
-/*
- * Page content
- */
+/* Page content */
 .content-section {
 	background-image: url('backgrounds/seamlesstexture13_500.jpg');
 	padding-top: 25px;
@@ -602,9 +589,7 @@ a.flex-prev {
 }
 /* End of page content */
 
-/*
- * Contact form
- */
+/* Contact form */
 .contact-form {
 	color: #666062;
 	font-size: 17px;
@@ -658,9 +643,7 @@ textarea.contact-form {
 }
 /* End of contact form */
 
-/*
- * Small groups page
- */
+/* Small groups page */
 span.area-name {
 	border-bottom: 2px solid #f9b625;
 	color: #666062;
@@ -714,9 +697,7 @@ span.small-groups-header, span.area-contacts-header {
 }
 /* end of small groups */
 
-/* 
- * Sidebar
- */
+/* Sidebar */
 .sidebar-container {
 	background-color: white;
 	border-radius: 2px;	
@@ -733,9 +714,7 @@ span.small-groups-header, span.area-contacts-header {
 }
 /* end of sidebar */	
 
-/*
- * Events
- */
+/* Events */
 #events {
 	background-color: rgb(51, 51, 51);
 	border-radius: 5px;
@@ -852,9 +831,7 @@ img.event-icon {
 }
 /* End of event */
 
-/* 
- * Footer
- */
+/* Footer */
 #footer {
 	background-color: #666062;
 	color: white;
@@ -872,9 +849,7 @@ img.event-icon {
 }
 /* end of footer */
 
-/*
- * Mobile layout 
- */
+/* Mobile layout */
 @media screen and (max-width: 600px) {
 	
 	body {
@@ -1238,6 +1213,7 @@ img.event-icon {
     /* Generic tags, etc */
     p {
         font-size: 14px;
+        text-align: center;
         line-height: 18px;
         margin-bottom: 7px;
     }
@@ -1316,6 +1292,10 @@ img.event-icon {
         padding: 0px;
     }
 
+    .info-column > p {
+        text-align: center;
+    }
+
     /* Events */
     div#events {
         height: 195px;
@@ -1356,6 +1336,11 @@ img.event-icon {
     /* Footer */
     #top-button {
         display: none;
+    }
+
+    #footer {
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 }
 

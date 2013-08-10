@@ -62,7 +62,7 @@ get_header();
 			<div class="info-column">
 				<h2 class="info-header">Small Groups</h2>
 				<p>
-				Small group bible studies are the heart of our movement. These meetings occur across campus lead by students. No matter your background, everyone is welcome! Feel free to check out a listing of small groups or contact us to learn more.
+				Small group bible studies are the heart of our movement. These meetings occur across campus led by students. No matter your background, everyone is welcome! Feel free to check out a listing of small groups or contact us to learn more.
 				</p>
 			</div>
             <div class="social-banner hide-600">
