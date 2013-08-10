@@ -1185,9 +1185,7 @@ img.event-icon {
 		margin-bottom: 4px;
 	}
 
-	/*
-	 * Form
- 	 */
+	/* Form */
 	textarea.contact-form {
 		display: inline-block;		
 		max-width: 95%;
@@ -1268,6 +1266,11 @@ img.event-icon {
         border-top: 4px solid #f9b625;
         top: 30px;
     }
+
+    .menu-item.js a, ul.sub-menu .menu-item.js a {
+	    font-size: 18px;
+		line-height: 25px;
+	}
 	
 	/* Set up the dropdown */
 	#menu-icon.js, #menu-header.js {
@@ -1313,7 +1316,7 @@ img.event-icon {
 
     /* Events */
     div#events {
-        height: 215px;
+        height: 195px;
     }
 
     div#events-header {
@@ -1323,7 +1326,7 @@ img.event-icon {
     }
 
     div#events-container {
-        height: 185px;
+        height: 165px;
     }
 
     div.event {
