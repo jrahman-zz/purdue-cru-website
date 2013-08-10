@@ -1,5 +1,4 @@
 
-
 BUILD_FOLDER=../Builds
 PLUGIN_FOLDER=../wp-plugin
 THEME_FOLDER=../wp-theme
@@ -19,9 +18,6 @@ PurdueCruTheme.zip: builds $(wildcard $(THEME_FOLDER)/PurdueCruTheme/*) $(THEME_
 
 PurdueCruPlugin.zip: builds $(wildcard $(PLUGIN_FOLDER)/PurdueCruPlugin/*) 
 	cd $(PLUGIN_FOLDER); zip -r PurdueCruPlugin PurdueCruPlugin; mv "PurdueCruPlugin.zip" $(BUILD_FOLDER)
-
-$(THEME_FOLDER)/PurdueCruTheme/style.css: $(THEME_FOLDER)/PurdueCruTheme/original.css
-	csstidy $(THEME_FOLDER)/PurdueCruTheme/original.css --template=highest --sort-selectors=true --preserve_css=true $(THEME_FOLDER)/PurdueCruTheme/style.css
 
 builds:
 	if [ ! -d $(BUILD_FOLDER) ]; then mkdir $(BUILD_FOLDER); fi
