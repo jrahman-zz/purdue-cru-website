@@ -1233,7 +1233,7 @@ img.event-icon {
 /*
  * Narrow mobile layout 
  */
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 350px), screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
 
     /* Generic tags, etc */
     p {
@@ -1243,12 +1243,12 @@ img.event-icon {
     }
 
     /* Header */
-    div#logo {
+    #logo {
         background: url('images/cru-logo-small.jpg') no-repeat;
         margin-top: 10px;
         margin-bottom: 5px;
-        width: 195px;
-        height: 112px;
+        width: 150px;
+        height: 86px;
     }
 
     div#background-bar-1 {
@@ -1303,7 +1303,9 @@ img.event-icon {
 
     /* Info section */
     .info-header {
-        margin-bottom: 2px;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 4px;
         padding-bottom: 2px;
     }
 
@@ -1349,6 +1351,11 @@ img.event-icon {
         margin-top: 40px;
         margin-left: 15px;
         margin-right: 15px;
+    }
+    
+    /* Footer */
+    #top-button {
+        display: none;
     }
 }
 
