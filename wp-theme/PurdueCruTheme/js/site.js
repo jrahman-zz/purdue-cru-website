@@ -45,7 +45,7 @@ jQuery(function($) {
 		}
 		
 		// Mobile nav-menu dropdown
-		$('#menu-icon').click(function() {
+		$('#menu-icon').click(function(e) {
 			$(this).toggleClass('clicked');
 			$('.menu').slideToggle();
 		});
