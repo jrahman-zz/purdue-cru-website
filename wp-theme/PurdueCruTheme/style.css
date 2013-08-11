@@ -145,7 +145,7 @@ a.button:hover {
 }
 
 #logo {
-    background: url('images/cru_logo_lockup.gif') no-repeat;
+    background: url('images/cru-logo-lockup-new.gif') no-repeat;
 	float: left;
 	margin-left: 15px;
 	margin-top: 15px;
@@ -1222,7 +1222,7 @@ img.event-icon {
     #logo {
         background: url('images/cru-logo-small.jpg') no-repeat;
         margin-top: 10px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         width: 150px;
         height: 86px;
     }
