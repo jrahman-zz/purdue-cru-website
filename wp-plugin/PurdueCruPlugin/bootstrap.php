@@ -50,7 +50,9 @@ date_default_timezone_set('America/Indianapolis');
 
 // Export the path to the plugin to allow themes to access plugin files
 define('PURDUE_CRU_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('PURDUE_CRU_PLUGIN_NAME', 'PurdueCRU');
+
+// Export the plugin name (folder name)
+define('PURDUE_CRU_PLUGIN_NAME', 'PurdueCruPlugin');
 
 require_once("CRU_Plugin.php");
 require_once("CRU_Small_Groups_Module.php");
