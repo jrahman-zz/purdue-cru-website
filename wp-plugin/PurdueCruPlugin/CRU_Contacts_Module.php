@@ -49,7 +49,7 @@ class CRU_Contacts_Module {
         $menu_slug = 'cru-contacts';
         $capability = 'edit_cru_contacts';
         $function = array($this, 'edit_page' );
-        $icon_url = plugins_url("PurdueCRU/images/contact.png");
+        $icon_url = plugins_url(PURDUE_CRU_PLUGIN_NAME . "/images/contact.png");
 
         $page = add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url);
     }

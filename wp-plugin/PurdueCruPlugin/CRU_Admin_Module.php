@@ -59,7 +59,7 @@ class CRU_Admin_Module {
         $menu_slug = 'cru-admin';
         $capability = 'cru_admin';
         $function = array($this, 'main_page');
-        $icon_url = plugins_url("PurdueCRU/images/settings.png");
+        $icon_url = plugins_url(PURDUE_CRU_PLUGIN_NAME . "/images/settings.png");
 
         $page = add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url);
     }
@@ -89,7 +89,7 @@ class CRU_Admin_Module {
      * Render the admin page
      *
      */
-    function main_page() {
+    public function main_page() {
 
         if (!current_user_can('cru_admin')) {
             wp_die(__('You do not have sufficient permissions to access this page.'));
@@ -131,7 +131,7 @@ class CRU_Admin_Module {
      * Register our options with Wordpress
      *
      */
-    function register_options() {
+    public function register_options() {
 
         add_settings_section("cru-email-options", "Email Options",
                             array($this, 'email_options'), "cru-options");

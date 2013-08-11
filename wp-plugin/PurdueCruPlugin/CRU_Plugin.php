@@ -28,21 +28,12 @@ class CRU_Plugin {
         $this->_capability = 'edit_user';
         $this->modules = $modules;
 
-        // Add admin menu pages
-        if (is_array($this->modules)) {
-            foreach ($this->modules as $module) {
-                if (method_exists($module, 'register_module')) {
-                    $module->register_module();
-                }
-            }
-        }
-
         // Enqueue scripts and style sheets
         add_action('admin_print_styles', array($this, 'cru_add_admin_styles'));
 
         // Register (de)activation hooks
-        register_activation_hook(__FILE__, array($this, 'cru_install_plugin'));
-        register_deactivation_hook(__FILE__, array($this, 'cru_uninstall_plugin'));
+        register_activation_hook("bootstrap.php", array($this, 'cru_install_plugin'));
+        register_deactivation_hook("bootstrap.php", array($this, 'cru_uninstall_plugin'));
     } // public function __construct()
 
     /**
@@ -59,21 +50,12 @@ class CRU_Plugin {
      */
     public function cru_install_plugin() {
 
-        // Install each module if possible
-        if (is_array($this->modules)) {
-            foreach ($this->modules as $module) {
-                if (method_exists($module, 'install_module')) {
-                    $module->install_module();
-                }
-            }
-        }
-
         add_role("cru_staff", "CRU Staff");
         add_role("cru_student", "CRU Student");
 
         // Init each role with the correct CRU permissions
         $role = get_role("cru_staff");
-        if ($role !== NULL) {
+        if ($role != NULL) {
             $role->add_cap("add_target_areas");
             $role->add_cap("edit_target_areas");
             $role->add_cap("delete_target_areas");
@@ -87,7 +69,7 @@ class CRU_Plugin {
         }
         
         $role = get_role("cru_student");
-        if ($role !== NULL) {
+        if ($role != NULL) {
             $role->add_cap("add_small_groups");
             $role->add_cap("edit_small_groups");
             $role->add_cap("delete_small_groups");
@@ -96,7 +78,7 @@ class CRU_Plugin {
         }
 
         $role = get_role("administrator");
-        if ($role !== NULL) {
+        if ($role != NULL) {
             $role->add_cap("add_target_areas");
             $role->add_cap("edit_target_areas");
             $role->add_cap("delete_target_areas");
@@ -108,10 +90,35 @@ class CRU_Plugin {
             $role->add_cap("cru_admin");
         }
 
+        // Install each module if possible
+        if (is_array($this->modules)) {
+            foreach ($this->modules as $module) {
+                if (method_exists($module, 'install_module')) {
+                    $module->install_module();
+                }
+            }
+        }
+
         // Install or update the database
         $this->cru_install_database();
 
     } // public function cru_install_plugin()
+
+    /**
+     *
+     * Run init to add the modules
+     *
+     */
+    public function init_plugin() {
+        // Add admin menu pages
+        if (is_array($this->modules)) {
+            foreach ($this->modules as $module) {
+                if (method_exists($module, 'register_module')) {
+                    $module->register_module();
+                }
+            }
+        }
+    }
 
 
     /**

@@ -49,7 +49,7 @@ class CRU_Small_Groups_Module {
         $menu_slug = 'cru-small-groups';
         $capability = 'read';
         $function = array($this, 'main_page');
-        $icon_url = plugins_url("PurdueCRU/images/bible.png");
+        $icon_url = plugins_url(PURDUE_CRU_PLUGIN_NAME . "/images/bible.png");
 
         $page = add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url);
 

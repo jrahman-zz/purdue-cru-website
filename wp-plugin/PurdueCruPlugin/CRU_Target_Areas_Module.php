@@ -57,7 +57,7 @@ class CRU_Target_Areas_Module {
         $menu_slug = 'cru-target-areas';
         $capability = 'read';
         $function = array($this, 'main_page');
-        $icon_url = plugins_url("PurdueCRU/images/church.png");
+        $icon_url = plugins_url(PURDUE_CRU_PLUGIN_NAME . "/images/church.png");
 
         $page = add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url);
 
