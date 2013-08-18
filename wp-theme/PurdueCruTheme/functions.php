@@ -443,11 +443,27 @@ function cru_get_events() {
 	    $client = new CRU_Facebook_Client($id, $secret);
         
         // Limit us to 10 events are be sure to return all needed details
-        $events = $client->getConnection($feed, "events", "10&fields=picture%2Cstart_time%2Clocation%2Cname");
+        $list = $client->getConnection($feed, "events", "10&fields=picture%2Cstart_time%2Clocation%2Cname%2Cend_time");
+        $events = array();
 
         // Cache the results away for reuse, expire in 15 minutes
-        if (is_array($events)) {
-            // Sort first
+        if (is_array($list)) {
+            $now = time();
+
+            // Filter old events
+            foreach ($list as $event) {
+
+                // Use an end time to see if this event is current
+                if (isset($event['end_time']) && strtotime($event['end_time']) > $now) {
+                    array_push($events, $event);
+
+                } else if (isset($event['start_time']) && strtotime($event['start_time']) > ($now + 10800)) {
+                    // Only remove if we are more than 3 hours past the start time
+                    array_push($events, $event);
+                }
+            }
+
+            // Sort by time
             usort($events, "cru_event_compare");
  
             cru_log(CRU_NOTICE, "Caching Facebook events");
