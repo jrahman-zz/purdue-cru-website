@@ -105,20 +105,20 @@ class CRU_Admin_Module {
     <?php CRU_Utils::print_action_result($action_result); ?>
     <h2 class="cru_admin_header"><?php echo __('Facebook cache'); ?></h2>
   
-    <a class="button" href="<?php echo(admin_url('admin.php?page=cru-handle-action&action=cru_flush_facebook_cache')); ?>">
+    <a class="button" href="<?php echo esc_attr(admin_url('admin.php?page=cru-handle-action&action=cru_flush_facebook_cache')); ?>">
         Clear Facebook Event Cache
     </a>
     <h2>
     <?php echo __('Plugin/Theme Options'); ?>
     </h2>
 
-    <form action="options.php" method="POST">
+    <form action="<?php echo 'options.php'; ?>" method="POST">
 <?php
         // TODO Consider AJAX possibilities for this
 	    settings_fields('cru-options');
 	    do_settings_sections('cru-options');
 ?>
-        <input type="hidden" value="/wp-admin/options.php?page=cru-admin" name="_wp_http_referer">
+        <input type="hidden" value="<?php echo admin_url('admin.php?page=cru-admin'); ?>" name="_wp_http_referer">
 	    <p class="submit"><input name="Submit" type="submit" class="button-primary" value="<?php echo __('Save Changes'); ?>"/></p>
     </form>
 </div>

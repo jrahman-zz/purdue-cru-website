@@ -212,8 +212,8 @@ CRU Contacts
                 $url = "/admin.php?page=cru-handle-action&action=cru_send_test_text&contact_id="
                       . $contact_id . "&_cru_send_test_text_nonce="
                       . wp_create_nonce("cru_send_test_text-$contact_id");
-                $url = urlencode($url); 
-                echo(admin_url($url)); ?>">
+                $url = admin_url($url); 
+                echo(esc_attr($url)); ?>">
                     <input type="button" id="test_button" class="button-primary" value="Test">
                 </a>
             </p>
