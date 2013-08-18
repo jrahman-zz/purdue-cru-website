@@ -14,7 +14,7 @@ get_header();
 			<div id="slide-control" class="slide-control">
 			<ul class="slides">
 			<li class="slide">
-				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/berlin-project-2.jpg" alt="Purdue Cru is an authentic community of students passionate about sharing Jesus Christ.">
+				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/fall_retreat_2012_1.jpg" alt="Purdue Cru is an authentic community of students passionate about sharing Jesus Christ.">
 				<div class="slide-message">
 					<h1 class="slide-header">Christ Centered Community</h1>				
 					<p class="slide-text">We are an authentic community of students at Purdue passionate about sharing Jesus Christ. Get in touch with a small group in your residence hall, visit us Friday nights, or attend one of our many retreats and conferences to learn more!
