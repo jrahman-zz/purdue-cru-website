@@ -7,6 +7,7 @@ if (!function_exists('add_action')) {
 }
 
 require_once("CRU_Utils.php");
+require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 require_once("CRU_Target_Areas.php");
 
 class CRU_Target_Areas_Module {
@@ -43,6 +44,35 @@ class CRU_Target_Areas_Module {
         // Add affiliation AJAX handlers
         add_action('wp_ajax_add_affiliation', array($this, 'add_affiliation'));
         add_action('wp_ajax_delete_affiliation', array($this, 'delete_affiliation'));
+    }
+
+    /**
+     *
+     * Install the module by updating the database
+     *
+     */
+    public function install_function() {
+        global $wpdb;
+        global $cru_db_version;
+
+        $target_areas_table = $wpdb->prefix . CRU_Utils::_target_areas_table;
+        $area_contacts_table = $wpdb->prefix . CRU_Utils::_area_contacts_table;
+
+        $sql = "CREATE TABLE $target_areas_table (
+        area_id mediumint(9) NOT NULL AUTO_INCREMENT,
+        area_name char(64) NOT NULL,
+        PRIMARY KEY  (area_id)
+        );
+        CREATE TABLE $area_contacts_table (
+        area_id mediumint(9) NOT NULL,
+        contact_id bigint(20) unsigned NOT NULL,
+        affiliation_type tinyint(3) NOT NULL," .
+        /*FOREIGN KEY  (area_id) REFERENCES $target_area_table(area_id),
+        FOREIGN KEY  (contact_id) REFERENCES $wpdb->users(ID),*/
+        "PRIMARY KEY  (area_id,contact_id,affiliation_type)
+        );";
+
+        dbDelta($sql);
     }
  
     /**

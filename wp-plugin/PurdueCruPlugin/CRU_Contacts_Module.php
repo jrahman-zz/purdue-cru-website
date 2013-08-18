@@ -6,6 +6,7 @@ if (!function_exists('add_action')) {
     exit(1);
 }
 
+require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 require_once("CRU_Utils.php");
 require_once("CRU_Contacts.php");
 require_once("CRU_Messaging.php");
@@ -35,6 +36,39 @@ class CRU_Contacts_Module {
 
         // Add contact AJAX handlers
         add_action('wp_ajax_edit_contact', array($this, 'cru_edit_contact'));
+    }
+
+    /**
+     *
+     * Install the module by updating the database
+     *
+     */
+    public function install_module() {
+        global $wpdb;
+        global $cru_db_version;
+
+        $sql = "CREATE TABLE $providers_table (
+        provider_id tinyint(5) NOT NULL AUTO_INCREMENT,
+        provider_name char(50) NOT NULL,
+        provider_gateway char(125) NOT NULL,
+        PRIMARY KEY  (provider_id)
+        );";
+
+        dbDelta($sql);
+
+        // Populate the providers table with a pre-selected list of providers
+        $wpdb->insert($providers_table,
+            array('provider_id' => 1, 'provider_name' => "AT&T", 'provider_gateway' => 'txt.att.net'));
+        $wpdb->insert($providers_table,
+            array('provider_id' => 2, 'provider_name' => "Verizon", 'provider_gateway' => 'vtext.com'));
+        $wpdb->insert($providers_table,
+            array('provider_id' => 3, 'provider_name' => "Sprint", 'provider_gateway' => "messaging.sprintpcs.com"));
+        $wpdb->insert($providers_table,
+            array('provider_id' => 4, 'provider_name' => "T-Mobile", 'provider_gateway' => "tmomail.net"));
+        $wpdb->insert($providers_table,
+            array('provider_id' => 5, 'provider_name' => "Straight Talk", 'provider_gateway' => "vtext.com"));
+        $wpdb->insert($providers_table,
+            array('provider_id' => 6, 'provider_name' => "TracFone", 'provider_gateway' => "mmst5.tracfone.com"));
     }
 
     /**

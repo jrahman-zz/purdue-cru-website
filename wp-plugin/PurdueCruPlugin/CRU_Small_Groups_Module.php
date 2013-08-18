@@ -6,6 +6,7 @@ if (!function_exists('add_action')) {
     exit(1);
 }
 
+require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 require_once("CRU_Small_Groups.php");
 
 class CRU_Small_Groups_Module {
@@ -36,6 +37,32 @@ class CRU_Small_Groups_Module {
         add_action('wp_ajax_add_small_group', array($this, 'cru_add_small_group'));
         add_action('wp_ajax_delete_small_group', array($this, 'cru_delete_small_group'));
         add_action('wp_ajax_edit_small_group', array($this, 'cru_edit_small_group'));
+    }
+
+    /**
+     *
+     * Install the module by updating the database
+     *
+     */
+    public function install_module() {
+        global $wpdb;
+        global $cru_db_version;
+
+        $sql = "CREATE TABLE $small_groups_table (
+        group_id mediumint(9) NOT NULL AUTO_INCREMENT,
+        area_id mediumint(9) NOT NULL,
+        contact_id bigint(20) unsigned NOT NULL,
+        day char(10) NOT NULL,
+        time char(10) NOT NULL,
+        location varchar(512) NOT NULL,
+        men tinyint(2) NOT NULL,
+        women tinyint(2) NOT NULL,
+        PRIMARY KEY  (group_id)," .
+        /*FOREIGN KEY  (area_id) REFERENCES $target_areas_table(area_id),
+        FOREIGN KEY  (contact_id) REFERENCES $wpdb->users(ID)*/
+        ");";
+
+        dbDelta($sql);
     }
 
     /**
