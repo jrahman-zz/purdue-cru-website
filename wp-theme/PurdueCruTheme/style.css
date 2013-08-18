@@ -793,7 +793,7 @@ span.small-groups-header, span.area-contacts-header {
 .event {
 	border-bottom: thin solid rgb(68, 68, 68);
 	border-collapse: separate;
-	padding: 7px;
+	padding: 5px;
 }
 
 .event-info {
@@ -802,7 +802,7 @@ span.small-groups-header, span.area-contacts-header {
 .event-text {
 	color: rgb(207, 207, 207);
 	font-size: 14px;
-	line-height: 20px;
+	line-height: 17px;
 	text-align: left;
 }
 
@@ -1152,6 +1152,10 @@ img.event-icon {
 		width: auto;
 	}
 
+    .info-column > p {
+        text-align: center;
+    }
+
 	.info-header {
 		border-bottom: 1px solid #f9b625;
 		display: inline-block;
@@ -1289,10 +1293,6 @@ img.event-icon {
         margin-top: 3px;
         margin-bottom: 3px;
         padding: 0px;
-    }
-
-    .info-column > p {
-        text-align: center;
     }
 
     /* Events */
