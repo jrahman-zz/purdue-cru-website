@@ -212,8 +212,8 @@ class CRU_Target_Areas_Module {
 
         // Perform the action dispatch
         if ($action !== FALSE) {
+
             // Forward certain actions onto the edit_target_areas page
-            //
             if ($action == "cru_edit_target_area") {
                 $this->edit_page();
                 return;
@@ -277,8 +277,8 @@ class CRU_Target_Areas_Module {
                 </span>
                 <?php
                 }
+
 				// Conditionally print the delete link
-				//
                 if (current_user_can("delete_target_areas")) { ?>
                 <span class="delete">
                     <a href="<?php echo esc_attr(CRU_Target_Areas::delete_target_area_url($area_id)); ?>">Delete</a>
@@ -291,8 +291,8 @@ class CRU_Target_Areas_Module {
         <td class="username column-username">
             <ul>
                 <?php
+
 				// Fetch the list of contacts affiliated with the given area
-                //
                 $contact_query = $wpdb->prepare($area_contacts_query, $area['area_id']);	
                 $area_contacts = $wpdb->get_results($contact_query, ARRAY_A);
 
