@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) exit;
 
 get_header();
 ?>
@@ -13,11 +13,11 @@ get_header();
             <div class="slide-sidebar" style="float: right;"></div>
 			<div id="slide-control" class="slide-control">
 			<ul class="slides">
-			<li class="slide">
-				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/fall_retreat_2012_1.jpg" alt="Purdue Cru is an authentic community of students passionate about sharing Jesus Christ.">
+			<li class="slide" style="display: none">
+				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/fall_retreat_2012_1.jpg" alt="Christ Centered Community.">
 				<div class="slide-message">
 					<h1 class="slide-header">Christ Centered Community</h1>				
-					<p class="slide-text">We are an authentic community of students at Purdue passionate about sharing Jesus Christ. Get in touch with a small group in your residence hall, visit us Friday nights, or attend one of our many retreats and conferences to learn more!
+					<p class="slide-text">We are an authentic community of students at Purdue passionate about sharing Jesus Christ. Get in touch with a small group in your residence hall, visit us on Friday night, or attend one of our many retreats and conferences to learn more!
                     </p>
 					<a href="<?php echo(get_site_url()); ?>/get-involved/" class="button slide-button">Learn More</a>
 				</div>
@@ -62,7 +62,7 @@ get_header();
 			<div class="info-column">
 				<h2 class="info-header">Small Groups</h2>
 				<p>
-				Small group bible studies are the heart of our movement. These meetings occur across campus led by students. No matter your background, everyone is welcome! Feel free to check out a listing of small groups or contact us to learn more.
+				Small group bible studies are the heart of our movement. These meetings occur across campus led by students. No matter your background, everyone is welcome! Feel free to check out a small group or contact us to learn more.
 				</p>
 			</div>
             <div class="social-banner hide-600">

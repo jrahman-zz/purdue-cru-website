@@ -4,7 +4,7 @@
 			</span>
 		</div> <!-- end of .hide-600 -->
 		<?php
+        cru_twitter_widget();
 		cru_events_widget("PurdueCru");
-		cru_twitter_widget();
 		?>
 		
