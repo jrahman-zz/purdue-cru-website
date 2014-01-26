@@ -132,7 +132,7 @@ class CRU_Contacts {
                         . "ON $wpdb->users.ID = meta4.user_id AND meta3.meta_key = 'first_name' "
                         . "LEFT OUTER JOIN $providers_table AS providers "
                         . "ON meta2.meta_value = providers.provider_id "
-                        . "ORDER BY $wpdb->users.display_name DESC";
+                        . "ORDER BY $wpdb->users.display_name ASC";
 
         $contacts = $wpdb->get_results($contact_query, ARRAY_A);
         return $contacts;
@@ -149,7 +149,7 @@ class CRU_Contacts {
         $cru_contacts_query = "SELECT * FROM $wpdb->users INNER JOIN $wpdb->usermeta  ON "
                             . "$wpdb->usermeta.user_id = $wpdb->users.ID WHERE "
                             . "$wpdb->usermeta.meta_key = 'wp_capabilities' AND $wpdb->usermeta"
-                            . ".meta_value LIKE '%cru%' ORDER BY display_name DESC";
+                            . ".meta_value LIKE '%cru%' ORDER BY display_name ASC";
         $cru_contacts = $wpdb->get_results($cru_contacts_query, ARRAY_A);
         return $cru_contacts;
     }

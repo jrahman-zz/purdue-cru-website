@@ -19,16 +19,12 @@ class CRU_Small_Groups_Module {
     }
 
     /**
-     *
      * Action dispatcher used for this modules action handling
-     * 
      */
     public $action_dispatcher;
 
     /**
-     *
      * Register the module with Wordpress
-     *
      */
     public function register_module() {
         add_action('admin_menu', array($this, 'add_menu'));
@@ -40,14 +36,12 @@ class CRU_Small_Groups_Module {
     }
 
     /**
-     *
      * Install the module by updating the database
-     *
      */
     public function install_module() {
         global $wpdb;
         global $cru_db_version;
-
+        $small_groups_table = $wpdb->prefix . CRU_Utils::_small_groups_table;
         $sql = "CREATE TABLE $small_groups_table (
         group_id mediumint(9) NOT NULL AUTO_INCREMENT,
         area_id mediumint(9) NOT NULL,
@@ -66,9 +60,7 @@ class CRU_Small_Groups_Module {
     }
 
     /**
-     *
      * Add the small groups page to the admin menu
-     *
      */
     public function add_menu() {
         $page_title = 'Small Groups';
@@ -280,7 +272,7 @@ Add Small Group
         CRU_Utils::print_action_result($action_result);
 
         // Retrieve the target areas
-        $target_area_query = "SELECT * FROM " . $wpdb->prefix . CRU_Utils::_target_areas_table;
+        $target_area_query = "SELECT * FROM " . $wpdb->prefix . CRU_Utils::_target_areas_table . " ORDER BY area_name ASC";
         $target_areas = $wpdb->get_results($target_area_query, ARRAY_A);       
 
         // Collect the cru students and staff who lead groups

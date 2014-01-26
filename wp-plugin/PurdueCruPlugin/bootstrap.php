@@ -1,16 +1,16 @@
 <?php
 
 /*
-Plugin Name: Purdue CRU Wordpress Plugin
-Description: Plugin for managing Purdue CRU Small Groups, Target Areas, and Contact information
-Version: 2.0
+Plugin Name: Purdue Cru
+Description: Plugin for managing Purdue Cru Small Groups, Target Areas, and Contact information
+Version: 2.1
 Author: Jason P Rahman (jprahman93@gmail.com, rahmanj@purdue.edu)
 Tags: Purdue, CRU, Campus Crusade for Christ
 
 License: BSD License
 License URI: license.txt 
 
-Copyright (c) 2013, Purdue Cru
+Copyright (c) 2013, 2014, Purdue Cru
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

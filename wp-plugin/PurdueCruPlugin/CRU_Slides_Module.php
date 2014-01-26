@@ -17,9 +17,7 @@ class CRU_Slides_Module {
 
 
     /**
-     *
      * Action dispatcher used for this modules action handling
-     * 
      */
     public $action_dispatcher;
 
@@ -50,9 +48,7 @@ class CRU_Slides_Module {
     }
 
     /**
-     *
      * Add menu to Wordpress
-     *
      */
     public function add_menu() {
         // Settings for the function call below
@@ -69,9 +65,5 @@ class CRU_Slides_Module {
 
         // TODO Register more pages here
     }
-
-
 }
-
-
 ?>

@@ -46,7 +46,7 @@ class CRU_Contacts_Module {
     public function install_module() {
         global $wpdb;
         global $cru_db_version;
-
+        $providers_table = $wpdb->prefix . CRU_Utils::_provider_table;
         $sql = "CREATE TABLE $providers_table (
         provider_id tinyint(5) NOT NULL AUTO_INCREMENT,
         provider_name char(50) NOT NULL,
@@ -147,7 +147,7 @@ CRU Contacts
         $providers_table = $wpdb->prefix . CRU_Utils::_provider_table;
         $contacts = CRU_Contacts::get_contacts_full();
 
-        $provider_query = "SELECT * FROM $providers_table";
+        $provider_query = "SELECT * FROM $providers_table ORDER BY provider_name ASC";
         $providers = $wpdb->get_results($provider_query, ARRAY_A);
 
         $target_areas_table = $wpdb->prefix . CRU_Utils::_target_areas_table;
@@ -156,7 +156,7 @@ CRU Contacts
 		// Define query to fetch the area affiliations of a user, pass this to wpdb->prepare with the contact_id 
         $affiliations_query = "SELECT DISTINCT $target_areas_table.area_name FROM $affiliations_table "
                             . "INNER JOIN $target_areas_table ON $affiliations_table.area_id = $target_areas_table.area_id "
-                            . "WHERE $affiliations_table.contact_id = '%s' ORDER BY area_name ASC";
+                            . "WHERE $affiliations_table.contact_id = '%s' ORDER BY area_name DESC";
 
         if ($contacts === NULL || !is_array($contacts)) {
             wp_die(__("Failed to retrieve contacts from database"));

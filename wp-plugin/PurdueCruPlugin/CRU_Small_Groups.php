@@ -34,7 +34,6 @@ class CRU_Small_Groups {
          * (boolean) success - TRUE if the group was deleted, FALSE otherwise
          * (string) message - if success == FALSE, then a message for the failure, emtpy otherwise
          * (integer) group_id - the ID of the deleted small group
-         * 
          */
 
         global $wpdb;

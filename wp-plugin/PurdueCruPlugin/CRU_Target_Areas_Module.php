@@ -22,16 +22,12 @@ class CRU_Target_Areas_Module {
     }
 
     /**
-     *
      * Action dispatcher used for this modules action handling
-     * 
      */
     public $action_dispatcher;
 
     /**
-     *
      * Register the module with Wordpress
-     *
      */
     public function register_module() {
         add_action('admin_menu', array($this, 'add_menu'));

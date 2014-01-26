@@ -13,7 +13,7 @@ $cru_db_version = "1.0";
 
 
 /**
- * Primary class for the Purdue CRU Website Plugin
+ * Primary class for the Purdue Cru Website Plugin
  *
  * @author Jason P Rahman (jprahman93@gmail.com, rahmanj@purdue.edu)
  */
@@ -100,7 +100,7 @@ class CRU_Plugin {
         }
 
         // Install or update the database
-        $this->cru_install_database();
+        //$this->cru_install_database();
 
     } // public function cru_install_plugin()
 

@@ -10,15 +10,12 @@ require_once("CRU_Target_Areas.php");
  * Class to provide methods to allow the theme to interface with the plugin
  *
  * @author Jason P. Rahman (jprahman93@gmail.com, rahmanj@purdue.edu)
- *
  */
 class CRU_Plugin_API {
 
 
     /**
      * Print a list of target area option tags
-     *
-     *
      */
     public static function target_area_options() {
         $target_areas = CRU_Target_Areas::get_target_areas();
@@ -32,10 +29,8 @@ class CRU_Plugin_API {
         }
     }
 
-
     /**
      * Get a list of the small groups for a given target area
-     *
      *
      * @return an associative array containing all the details for a given small group
      */
@@ -48,20 +43,14 @@ class CRU_Plugin_API {
     /**
      * Get a list of photos for the photo banner from Facebook
      *
-     *
-     *
      * @return array an array of associative arrays containing details for each photo
      */
     public static function get_facebook_photos() {
         
     }
 
-
     /**
      * Get the Facebook newsfeed for the Purdue CRU page
-     *
-     *
-     *
      */
     public static function get_facebook_newsfeed() {
         try {
