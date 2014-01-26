@@ -178,8 +178,10 @@ CRU Contacts
 <tbody>
             <?php
         $index = 0;
+        $current_user_id = wp_get_current_user()->ID;
             foreach ($contacts as $contact) {
                 $contact_id = $contact['ID'];
+                if (!current_user_can("cru_student") || $contact_id == $current_user_id) {
             ?>
     <tr<?php if($index++ % 2 == 1) echo " class=\"alternate\""; ?>>
         <form class="ajax-form" method="post" action="<?php echo admin_url("admin.php?page=cru-handle-action"); ?>">
@@ -260,6 +262,7 @@ CRU Contacts
         </form>
     </tr>
             <?php
+                }            
             }
             ?>
 </tbody>

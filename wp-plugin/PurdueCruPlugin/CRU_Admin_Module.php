@@ -126,11 +126,8 @@ class CRU_Admin_Module {
 <?php
     }
  
-
     /**
-     *
      * Register our options with Wordpress
-     *
      */
     public function register_options() {
 

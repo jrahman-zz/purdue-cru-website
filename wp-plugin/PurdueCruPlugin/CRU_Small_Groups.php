@@ -331,8 +331,6 @@ class CRU_Small_Groups {
 
     /**
      * Get a url to the page where the given group can be edited
-     *
-     *
      */
     public static function delete_group_url($id) {
         $id = urlencode($id);
@@ -343,8 +341,6 @@ class CRU_Small_Groups {
 
     /**
      * Get a url to delete the group with the given ID
-     *
-     *
      */
     public static function edit_group_url($id) {
         $id = urlencode($id);

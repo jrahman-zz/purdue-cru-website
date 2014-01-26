@@ -20,9 +20,7 @@ class CRU_Action_Dispatcher {
     }
 
     /**
-     *
      * Register the module with Wordpress
-     *
      */
     public function register_module() {
         add_action('admin_menu', array($this, 'add_menu'));
@@ -30,9 +28,7 @@ class CRU_Action_Dispatcher {
     }
 
     /**
-     *
      * Register an action handler to be run on a given action
-     *
      */
     public function register_action($action_name, $action_handler) {
 
@@ -41,16 +37,12 @@ class CRU_Action_Dispatcher {
     }
 
     /**
-     *
      * Associative array of action handler callables
-     *
      */
     public $handlers;
 
     /**
-     *
      * Add the dummy handle action page, this is for our action dispatcher
-     *
      */
     public function add_menu() {
         $page_title = 'Handle Action';
@@ -64,9 +56,7 @@ class CRU_Action_Dispatcher {
     }
 
     /**
-     *
      * Dummy function for the handle action page
-     *
      */
     public function handle_action_page() {
         // Give a nice "scram off" message
@@ -74,9 +64,7 @@ class CRU_Action_Dispatcher {
     }
 
     /**
-     *
      * Run action handlers registered by the modules
-     *
      */
     public function handle_action() {
 

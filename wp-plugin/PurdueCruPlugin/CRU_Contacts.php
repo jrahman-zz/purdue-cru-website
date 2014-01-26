@@ -19,8 +19,6 @@ class CRU_Contacts {
 
     /**
      * Handler for editing contacts
-     *
-     *
      */
     public function edit_contact() {
 
