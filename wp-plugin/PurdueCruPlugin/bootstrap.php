@@ -3,7 +3,7 @@
 /*
 Plugin Name: Purdue Cru
 Description: Plugin for managing Purdue Cru Small Groups, Target Areas, and Contact information
-Version: 2.1
+Version: 2.1.1
 Author: Jason P Rahman (jprahman93@gmail.com, rahmanj@purdue.edu)
 Tags: Purdue, CRU, Campus Crusade for Christ
 

@@ -12,7 +12,6 @@ require_once("CRU_Utils.php");
 /**
  * Primary class for managing small groups
  *
- *
  * author: Jason P. Rahman (rahmanj@purdue.edu, jprahman93@gmail.com)
  */
 class CRU_Small_Groups {
@@ -20,7 +19,6 @@ class CRU_Small_Groups {
 
     /**
      * Handler for removing small groups
-     *
      */
     public static function delete_small_group() {
         
@@ -76,9 +74,7 @@ class CRU_Small_Groups {
 
 
     /**
-     *
      * Handler to add small groups
-     *
      */
     public static function add_small_group() {
 
@@ -88,8 +84,6 @@ class CRU_Small_Groups {
          * (string) POST[time] - starting time of the small group
          * (string) POST[day] - the day of the week the small group occurs
          * (string) POST[location] - the location where the small group meets
-         * (boolean) POST[men] - true if the group is mens
-         * (boolean) POST[women] - true if the group is womens
          * (integer) POST[area_id] - the ID of the area the small group belongs to
          * (integer) POST[leader] - ID of the user who leads the group
          *
@@ -146,54 +140,34 @@ class CRU_Small_Groups {
                 $result['message'] = "Invalid or missing group leader";
             } else {
 
-                if (CRU_Utils::get_request_param('men') !== FALSE && CRU_Utils::get_request_param('men') == TRUE) {
-                    $men = 1;
+                // Check that the area exists
+                $area_table = $wpdb->prefix . CRU_Utils::_target_areas_table;
+                $area_query = $wpdb->prepare("SELECT * FROM $area_table WHERE area_id = %s", CRU_Utils::get_request_param('area_id'));
+                $rows = $wpdb->query($area_query);
+                    
+                if ($rows !== 1) {
+                    $result['success'] = FALSE;
+                    $result['message'] = "Cannot add small group because the area doesn't exist";
                 } else {
-                    $men = 0;
-                }
-
-                if (CRU_Utils::get_request_param('women') !== FALSE && CRU_Utils::get_request_param('women') == TRUE) {
-                    $women = 1;
-                } else {
-                    $women = 0;
-                }
-
-                if ($men + $women == 0) {
+                            
+                    // Add the group to the table now that we have verified the input
+                    //
+                    $small_groups_table = $wpdb->prefix . CRU_Utils::_small_groups_table;
+                    $val = $wpdb->insert($small_groups_table,
+                                         array('time' => $time,
+                                               'day' => $day,
+                                               'area_id' => $area_id,
+                                               'contact_id' => $leader,
+                                               'location' => $location));
+                    if ($val === FALSE) {
                         $result['success'] = FALSE;
-                        $result['message'] = "The group must be listed as a mens and/or womens group";
-                } else {
-
-                    // Check that the area exists
-                    $area_table = $wpdb->prefix . CRU_Utils::_target_areas_table;
-                    $area_query = $wpdb->prepare("SELECT * FROM $area_table WHERE area_id = %s", CRU_Utils::get_request_param('area_id'));
-                    $rows = $wpdb->query($area_query);
-                
-                    if ($rows !== 1) {
-                        $result['success'] = FALSE;
-                        $result['message'] = "Cannot add small group because the area doesn't exist";
+                        $result['message'] = "Failed to add the small group";
                     } else {
-                        
-                        // Add the group to the table now that we have verified the input
+                        // Return the ID of the inserted group along with the result
                         //
-                        $small_groups_table = $wpdb->prefix . CRU_Utils::_small_groups_table;
-                        $val = $wpdb->insert($small_groups_table,
-                                            array('time' => $time,
-                                                  'day' => $day,
-                                                  'area_id' => $area_id,
-                                                  'contact_id' => $leader,
-                                                  'men' => $men,
-                                                  'women' => $women,
-                                                  'location' => $location));
-                        if ($val === FALSE) {
-                            $result['success'] = FALSE;
-                            $result['message'] = "Failed to add the small group";
-                        } else {
-                            // Return the ID of the inserted group along with the result
-                            //
-                            $result['success'] = TRUE;
-                            $result['message'] = "Small group added";
-                            $result['group_id'] = $wpdb->insert_id;
-                        }
+                        $result['success'] = TRUE;
+                        $result['message'] = "Small group added";
+                        $result['group_id'] = $wpdb->insert_id;
                     }
                 }
             }
@@ -206,8 +180,6 @@ class CRU_Small_Groups {
 
     /**
      * Handler for editing a small group
-     *
-     *
      */
     public static function edit_small_group() {
          
@@ -218,8 +190,6 @@ class CRU_Small_Groups {
          * (string) POST[time] - starting time of the small group
          * (string) POST[day] - the day of the week the small group occurs
          * (string) POST[location] - the location where the small group meets
-         * (boolean) POST[men] - true if the group is mens
-         * (boolean) POST[women] - true if the group is womens
          * (integer) POST[area_id] - the ID of the area the small group belongs to
          * (integer) POST[leader] - ID of the user who leads the group
          *
@@ -276,21 +246,7 @@ class CRU_Small_Groups {
                 $result['message'] = "Invalid or missing group leader";
             } else {
 
-                // Check for men's and women's group status
-                if (CRU_Utils::get_request_param('men') !== FALSE && CRU_Utils::get_request_param('men') == TRUE) {
-                    $men = 1;
-                } else {
-                    $men = 0;
-                }
-
-                if (CRU_Utils::get_request_param('women') !== FALSE && CRU_Utils::get_request_param('women') == TRUE) {
-                    $women = 1;
-                } else {
-                    $women = 0;
-                }
-
                 // Query to check if the area exists
-                //
                 $area_table = $wpdb->prefix . CRU_Utils::_target_areas_table;
                 $area_query = $wpdb->prepare("SELECT * FROM $area_table WHERE area_id = %s", $area_id);
                 $rows = $wpdb->query($area_query);
@@ -299,29 +255,22 @@ class CRU_Small_Groups {
                     $result['success'] = FALSE;
                     $result['message'] = "Cannot edit small group because the area doesn't exist";
                 } else {
-                    if ($men + $women == 0) {
-                        $result['success'] = FALSE;
-                        $result['message'] = "The group must be listed as a mens or womens group";
-                    } else {
 
-                        // Perform update query on datebase with validated data
-                        $small_groups_table = $wpdb->prefix . CRU_Utils::_small_groups_table;
-                        $val = $wpdb->update($small_groups_table,
-                                                array('time' => $time,
-                                                  'day' => $day,
-                                                  'location' => $location,
-                                                  'area_id' => $area_id,
-                                                  'contact_id' => $leader,
-                                                  'men' => $men,
-                                                  'women' => $women),
-                                                array('group_id' => $group_id));
-                        if ($val === FALSE) {
-                            $result['success'] = FALSE;
-                            $result['message'] = "Failed to edit the small group";
-                        } else {
-                            $result['success'] = TRUE;
-                            $result['message'] = "Small group edited";
-                        }
+                    // Perform update query on datebase with validated data
+                    $small_groups_table = $wpdb->prefix . CRU_Utils::_small_groups_table;
+                    $val = $wpdb->update($small_groups_table,
+                                         array('time' => $time,
+                                               'day' => $day,
+                                               'location' => $location,
+                                               'area_id' => $area_id,
+                                               'contact_id' => $leader),
+                                         array('group_id' => $group_id));
+                    if ($val === FALSE) {
+                        $result['success'] = FALSE;
+                        $result['message'] = "Failed to edit the small group";
+                    } else {
+                        $result['success'] = TRUE;
+                        $result['message'] = "Small group edited";
                     }
                 }
             }
@@ -366,7 +315,7 @@ class CRU_Small_Groups {
 
         $small_groups_table = $wpdb->prefix . CRU_Utils::_small_groups_table;
 
-        $query = $wpdb->prepare("SELECT group_id, area_id, contact_id, day, time, location, men, women, meta1.meta_value AS first_name, "
+        $query = $wpdb->prepare("SELECT group_id, area_id, contact_id, day, time, location, meta1.meta_value AS first_name, "
                 . "meta2.meta_value AS last_name, meta3.meta_key AS phone_number FROM $small_groups_table "
                 . "LEFT OUTER JOIN $wpdb->usermeta AS meta1 ON meta1.user_id = contact_id "
                 . "LEFT OUTER JOIN $wpdb->usermeta AS meta2 ON meta2.user_id = contact_id "

@@ -49,8 +49,6 @@ class CRU_Small_Groups_Module {
         day char(10) NOT NULL,
         time char(10) NOT NULL,
         location varchar(512) NOT NULL,
-        men tinyint(2) NOT NULL,
-        women tinyint(2) NOT NULL,
         PRIMARY KEY  (group_id)," .
         /*FOREIGN KEY  (area_id) REFERENCES $target_areas_table(area_id),
         FOREIGN KEY  (contact_id) REFERENCES $wpdb->users(ID)*/
@@ -103,9 +101,7 @@ class CRU_Small_Groups_Module {
     }
     
     /**
-     *
      * Handler for the edit group action
-     *
      */
     public function edit_group() {
         $action_result = CRU_Small_Groups::edit_small_group();
@@ -124,9 +120,7 @@ class CRU_Small_Groups_Module {
     }
 
     /**
-     *
      * Handler for the delete group action
-     *
      */
     public function delete_group() {
         $action_result = CRU_Small_Groups::delete_small_group();
@@ -140,9 +134,7 @@ class CRU_Small_Groups_Module {
     }
 
     /**
-     *
      * Render the small groups page
-     *
      */  
     public function main_page() {
         global $wpdb;
@@ -189,8 +181,6 @@ class CRU_Small_Groups_Module {
             <th scope="col" class="manage-column column"><span>Time</span></th>
             <th scope="col" class="manage-column column"><span>Day</span></th>
             <th scope="col" class="manage-column column"><span>Location</span></th>
-            <th scope="col" class="manage-column column"><span>Men</span></th>
-            <th scope="col" class="manage-column column"><span>Women</span></th>
             <th scope="col" class="manage-column column"><span>Area</span></th>
         </tr>
     </thead>
@@ -201,8 +191,6 @@ class CRU_Small_Groups_Module {
 		    <th scope="col" class="manage-column column"><span>Time</span></th>
 		    <th scope="col" class="manage-column column"><span>Day</span></th>
 		    <th scope="col" class="manage-column column"><span>Location</span></th>
-		    <th scope="col" class="manage-column column"><span>Men</span></th>
-		    <th scope="col" class="manage-column column"><span>Women</span></th>
 		    <th scope="col" class="manage-column column"><span>Area</span></th>
 		</tr>
     </tfoot>
@@ -230,10 +218,6 @@ class CRU_Small_Groups_Module {
         <td><strong><?php echo($group['time']); ?></strong></td>
         <td><strong><?php echo($group['day']); ?></strong></td>
         <td><strong><?php echo($group['location']); ?></strong></td>
-        <td><strong><?php echo($group['men'] == 1 ? "Yes" : "No"); ?></strong>
-        </td>
-        <td><strong><?php echo($group['women'] == 1 ? "Yes" : "No"); ?></strong>
-        </td>
         <td><strong><?php echo($group['area_name']); ?></strong>
         </td>
         </tr>
@@ -335,11 +319,9 @@ Add Small Group
                 <?php              
                     }
                 }
-                ?>
-            
+                ?>    
                 <option value="12:00PM">12:00PM</option> 
                 <option value="12:30PM">12:30PM</option>           
-        
                 <?php
                 // Print out the time options from 1:00PM to 10:00PM
                 for ($i = 1; $i <= 10; $i++) {
@@ -352,18 +334,6 @@ Add Small Group
                 }
                 ?>
             <select>
-        </td>
-    </tr>
-    <tr class="form-field form-required">
-        <th scope="row"><label for="men">Men's Group</label></th>
-        <td>
-            <input type="checkbox" name="men" id="men" value="true">
-        </td>
-    </tr>
-    <tr class="form-field form-required">
-        <th scope="row"><label for="women">Women's Group</label></th>
-        <td>
-            <input type="checkbox" name="women" id="women" value="true">
         </td>
     </tr>
     <tr class="form-field form-required">
@@ -514,18 +484,6 @@ Edit Small Group
         </td>
     </tr>
     <tr class="form-field form-required">
-        <th scope="row"><label for="men">Men's Group</label></th>
-        <td>
-        <input type="checkbox" name="men" id="men" value="true" <?php if ($group['men'] != 0) echo('checked="true"'); ?>>
-        </td>
-    </tr>
-    <tr class="form-field form-required">
-        <th scope="row"><label for="women">Women's Group</label></th>
-        <td>
-        <input type="checkbox" name="women" id="women" value="true" <?php if ($group['women'] != 0) echo('checked="true"'); ?>>
-        </td>
-    </tr>
-    <tr class="form-field form-required">
         <th scope="row"><label for="area">Target Area <span class="description">(required)</span></label></th>
         <td>
         <select name="area_id">
@@ -533,7 +491,7 @@ Edit Small Group
                 // Print out the target areas the group could be a part of
                 foreach ($target_areas as $target_area) {
                     if ($target_area['area_id'] === $group['area_id']) {
-                        echo('<option value="' . esc_attr($target_area['area_id']) . "\" checked=\"true\">" . $target_area['area_name'] . '</option>');
+                        echo('<option value="' . esc_attr($target_area['area_id']) . "\" selected=\"selected\">" . $target_area['area_name'] . '</option>');
                     } else {
                         echo('<option value="' . esc_attr($target_area['area_id']) . '">' . $target_area['area_name'] . '</option>');
                     }

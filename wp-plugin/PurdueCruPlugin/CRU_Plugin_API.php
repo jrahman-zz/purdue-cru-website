@@ -23,10 +23,7 @@ class CRU_Plugin_API {
         if ($target_areas !== NULL && is_array($target_areas)) {
             foreach ($target_areas as $target_area) { ?>
             <option value="<?php echo($target_area['area_id']); ?>"><?php echo($target_area['area_name']); ?></option>
-       <?php}   
-        } else {
-
-        }
+       <?php}
     }
 
     /**
