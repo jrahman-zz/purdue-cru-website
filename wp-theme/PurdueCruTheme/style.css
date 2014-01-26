@@ -103,6 +103,10 @@ li {
 	clear: both;
 }
 
+.clearfix-right {
+    clear: right;
+}
+
 .button {
 	background-color: #007398;
 	border: 1px solid #666062;
@@ -142,13 +146,13 @@ a.button:hover {
 	padding: 0px;
 	position: relative;
 	width: 952px;
+    padding-top: 13px;
 }
 
 #logo {
     background: url('images/cru-logo-lockup-new.gif') no-repeat;
 	float: left;
 	margin-left: 15px;
-	margin-top: 15px;
 	margin-bottom: 0px;
     
 	width: 180px;
@@ -162,6 +166,7 @@ a.button:hover {
 	font-style: normal;
 	font-weight: 200;
 	margin-top: 90px;
+    margin-bottom: 10px;
 	text-transform: uppercase;
 }
 
@@ -222,7 +227,7 @@ div.social-header {
 
 /* Nav menu */
 .menu, .menu-item, .page_item, .current_page_item, .current_page_parent, .sub-menu {
-	/* Remove since validation complains text-rendering: optimizespeed; */
+	/* Remove since validation complains: text-rendering: optimizespeed; */
 } 
 
 #menu-icon, #menu-header {
@@ -235,7 +240,7 @@ div.social-header {
 
 div.menu-container {
 	background-color: white;
-	height: auto;
+	height: 28px;
 }
 
 ul.menu {
@@ -243,9 +248,12 @@ ul.menu {
 	border: 0px solid white;
 	color: #FFFFFF;
 	display: block;
-	height: auto;
+    float: right;
+	height: 28px;
 	margin-left: auto;
 	margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
 	padding: 0px;
 	position: relative;	
 	text-align: left;
@@ -260,6 +268,15 @@ ul.menu {
 	height: auto;
 	width: 158px;
 	transition: all 0.2s;
+}
+
+.menu-item.js {
+    width: auto;
+}
+
+ul.menu>li.menu-item.js>a {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* The submenu items must be narrower because of the border */
@@ -336,7 +353,7 @@ ul.sub-menu .menu-item + .menu-item {
 
 /* Content styles */
 .page-section {
-	padding-top: 25px;
+	padding-top: 17px;
 	padding-bottom: 0px;
 }
 

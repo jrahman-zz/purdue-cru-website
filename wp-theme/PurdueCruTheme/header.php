@@ -55,7 +55,6 @@ if ( !defined('ABSPATH')) exit;
 			<div id="friday-night" class="no-js">
 				Join us Fridays @ 7:00PM in EE129
 			</div>
-			<div class="clearfix"></div>
 
 		<?php
 		/* Standard desktop navigation */
@@ -66,7 +65,7 @@ if ( !defined('ABSPATH')) exit;
 			'container_id'		=> 'menu-container',
 			'menu_class'		=> 'menu no-js',
 			'depth'				=> '2',
-			'items_wrap'		=> "<span id=\"menu-header\" class=\"no-js\">Purdue Cru</span><a id=\"menu-icon\" class=\"no-js\"><img width=\"40\" height=\"40\" src=\"" . get_template_directory_uri() . "/images/menu-icon.png\" alt=\"Purdue Cru Menu\"></a><div class=\"clearfix\"></div><ul id=\"%1\$s\" class=\"%2\$s\">%3\$s</ul><div class=\"clearfix\"></div>",
+			'items_wrap'		=> "<span id=\"menu-header\" class=\"no-js\">Purdue Cru</span><a id=\"menu-icon\" class=\"no-js\"><img width=\"40\" height=\"40\" src=\"" . get_template_directory_uri() . "/images/menu-icon.png\" alt=\"Purdue Cru Menu\"></a><div class=\"clearfix-right\"></div><ul id=\"%1\$s\" class=\"%2\$s\">%3\$s</ul><div class=\"clearfix\"></div>",
             'fallback_cb'       => 'cru_fallback_menu'
 		);
 		wp_nav_menu($config); 
