@@ -23,7 +23,7 @@ builds:
 	if [ ! -d $(BUILD_FOLDER) ]; then mkdir $(BUILD_FOLDER); fi
 
 clean:
-	rm -f $(BUILD_FOLDER)/PurdueCruTheme.zip $(BUILD_FOLDER)/PurdueCruPlugin.zip $(THEME_FOLDER)/PurdueCruTheme/style.css
+	rm -f $(BUILD_FOLDER)/PurdueCruTheme.zip $(BUILD_FOLDER)/PurdueCruPlugin.zip
 
 .PHONY: builds
 .PHONY: clean

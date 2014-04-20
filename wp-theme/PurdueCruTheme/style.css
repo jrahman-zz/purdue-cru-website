@@ -150,13 +150,12 @@ a.button:hover {
 }
 
 #logo {
-    background: url('images/cru-logo-lockup-new.gif') no-repeat;
 	float: left;
 	margin-left: 15px;
 	margin-bottom: 0px;
     
 	width: 180px;
-    height: 150px;
+    height: 180px;
 }
 
 #friday-night {
@@ -924,6 +923,8 @@ img.event-icon {
 		margin-right: auto;
 		margin-bottom: 5px;
 		margin-top: 25px;
+        width: 180px;
+        height: 180px;
 	}
 	/* End of header */
 
@@ -1240,11 +1241,10 @@ img.event-icon {
 
     /* Header */
     #logo {
-        background: url('images/cru-logo-small.jpg') no-repeat;
         margin-top: 10px;
         margin-bottom: 10px;
         width: 150px;
-        height: 86px;
+        height: 150px;
     }
 
     div#background-bar-1 {

@@ -33,7 +33,7 @@ get_header();
 				<div class="clearfix"></div>
 			</li>
 			<li class="slide" style="display: none">
-				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/cru-logo-large.jpg" alt="Join the Purdue Cru community Friday nights at 7:00PM.">
+				<img class="slide-image" src="<?php echo get_template_directory_uri()?>/images/purdue-cru-logo-large.jpg" alt="Join the Purdue Cru community Friday nights at 7:00PM.">
 				<div class="slide-message">
 					<h1 class="slide-header">Friday Night Cru</h1>				
 					<p class="slide-text">Friday Night Cru is our weekly meeting where we gather for worship, teaching from the Bible, and discussion about how Biblical principles apply to our life at college. Join us in EE129 at 7pm! </p>

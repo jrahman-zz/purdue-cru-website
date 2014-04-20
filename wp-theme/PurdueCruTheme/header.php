@@ -48,8 +48,7 @@ if ( !defined('ABSPATH')) exit;
 	<div id="header">
 		<div id="header-wrapper">
             <a href="<?php echo get_home_url(); ?>">
-			<div id="logo" class="no-js">	
-			</div>
+			<img src="<?php echo get_template_directory_uri(); ?>/images/purdue-cru-logo.jpg" id="logo" class="no-js"/>
             </a>
 
 			<div id="friday-night" class="no-js">
@@ -70,7 +69,8 @@ if ( !defined('ABSPATH')) exit;
 		);
 		wp_nav_menu($config); 
 
-		?>	
+		?>
+        <div class="clearfix"></div>
 		</div> <!-- end of #header-wrapper  -->
 	</div> <!-- end of #header -->
 	<div id="background-bar-1"></div>
